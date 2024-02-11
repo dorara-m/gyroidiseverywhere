@@ -1,0 +1,65 @@
+---
+interface Props {
+	title: string;
+	bg?: boolean;
+	h3?: boolean;
+}
+
+const { title,bg,h3 } = Astro.props;
+---
+
+<section
+	class={`section ${bg ? 'bg' : ''} ${h3 ? 'h3' : ''}`}
+>
+	{!h3 ? (
+		<div class="container">
+			<h2>{title}</h2>
+			<slot />
+		</div>
+	) : (
+		<>
+			<h3>{title}</h3>
+			<slot />
+		</>
+	)}
+</section>
+
+<style lang="scss">
+	@import "../styles/mq.scss";
+
+	.section {
+		padding: 40px 0;
+		h2 {
+			font-size: 24px;
+			font-weight: 500;
+			margin-bottom: 24px;
+			color: var(--color-sub);
+			font-family: var(--font-heading);
+			@include mq() {
+				font-size: 40px;
+			}
+		}
+
+		&.bg {
+			background-color: var(--color-sub);
+			color: #fff;
+			h2 {
+				color: #fff;
+			}
+		}
+
+		&.h3 {
+			padding: 0;
+			margin-bottom: 24px;
+			h3 {
+				font-size: 18px;
+				font-family: var(--font-heading);
+				margin-bottom: 16px;
+				@include mq() {
+					font-size: 24px;
+				}
+			}
+		}
+	}
+</style>
+

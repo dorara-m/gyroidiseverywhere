@@ -109,13 +109,28 @@ import imageLogo from "../images/gyroid-logo.png";
 </style>
 
 <script>
-	// 画面幅が687px以下の場合は非表示
 	const header = document.querySelector('header');
 	if (header) {
+		// 画面幅が687px以下の場合は非表示
 		if (window.innerWidth <= 687) {
 			header.classList.add('hidden');
 		} else {
 			header.classList.remove('hidden');
+		}
+		// スクロールでヘッダースタイル変更
+		const pageHeader = document.querySelector('.pageHeader');
+		if (pageHeader) {
+			const handleScroll = () => {
+				// ヘッダー固定位置は、ページヘッダーの高さ - ヘッダーの高さ
+				// @todo ここのエラー気になる
+				const fixedPos = pageHeader.offsetHeight - header.offsetHeight;
+				if (window.scrollY > fixedPos) {
+					header.classList.add('fixed');
+				} else {
+					header.classList.remove('fixed');
+				}
+			};
+			window.location.pathname !== "/" && window.addEventListener("scroll", handleScroll);
 		}
 	}
 </script>

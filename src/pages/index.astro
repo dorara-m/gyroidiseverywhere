@@ -4,42 +4,40 @@ import imageProf from "../images/home/prof.png";
 import imageGyroid from "../images/home/gyroid.png";
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<div class="home">
-			<div class="container">
-				<div class="textArea">
-					<h1>Gyroid is everywhere</h1>
-					<div class="subTitle">
-						Alan Schoen
-						<br />
-						100th birth anniversary
-					</div>
-					<dl>
-						<dt>Date</dt>
-						<dd>November 19-22, 2024</dd>
-						<dt>Venue</dt>
-						<dd>Kindai University</dd>
-						<dt>Organizers</dt>
-						<dd>
-							<ul>
-								<li>Toyota Riken</li>
-								<li>Kindai University</li>
-							</ul>
-						</dd>
-					</dl>
+<Layout>
+	<div class="home">
+		<div class="container">
+			<div class="textArea">
+				<h1>Gyroid is everywhere</h1>
+				<div class="subTitle">
+					Alan Schoen
+					<br />
+					100th birth anniversary
 				</div>
-				<div class="imgArea">
-					<div class="img01">
-						<img src={imageProf.src} alt="" />
-					</div>
-					<div class="img02">
-						<img src={imageGyroid.src} alt="" />
-					</div>
+				<dl>
+					<dt>Date</dt>
+					<dd>November 19-22, 2024</dd>
+					<dt>Venue</dt>
+					<dd>Kindai University</dd>
+					<dt>Organizers</dt>
+					<dd>
+						<ul>
+							<li>Toyota Riken</li>
+							<li>Kindai University</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<div class="imgArea">
+				<div class="img01">
+					<img src={imageProf.src} alt="" />
+				</div>
+				<div class="img02">
+					<img src={imageGyroid.src} alt="" />
 				</div>
 			</div>
 		</div>
-	</main>
+	</div>
 </Layout>
 
 <style lang="scss">

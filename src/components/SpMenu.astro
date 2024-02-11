@@ -110,7 +110,8 @@ lists.unshift({ name: "Home", path: "/" });
 		height: 100%;
 	}
 
-	.list {
+	ul.list {
+		list-style: none;
 		li:not(:last-child) {
 			border-bottom: 1px solid #bbb;
 		}
@@ -133,6 +134,18 @@ lists.unshift({ name: "Home", path: "/" });
 		} else {
 			spMenu.classList.add('hidden');
 		}
+	}
+	// 開閉ロジック
+	const button = document.querySelector('.spMenu .button');
+	const overlay = document.querySelector('.spMenu .overlay');
+	const close = document.querySelector('.spMenu .close');
+	if (button && overlay && close) {
+		button.addEventListener('click', () => {
+			overlay.classList.add('active');
+		});
+		close.addEventListener('click', () => {
+			overlay.classList.remove('active');
+		});
 	}
 </script>
 
