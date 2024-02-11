@@ -1,0 +1,174 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+
+import image01 from "../../images/photos/img01.jpg";
+import image02 from "../../images/photos/img02.jpg";
+import image03 from "../../images/photos/img03.jpg";
+import image04 from "../../images/photos/img04.jpg";
+import image05 from "../../images/photos/img05.jpg";
+import image06 from "../../images/photos/img06.jpg";
+import image07 from "../../images/photos/img07.jpg";
+import image08 from "../../images/photos/img08.jpg";
+import image09 from "../../images/photos/img09.jpg";
+import image10 from "../../images/photos/img10.jpg";
+import image11 from "../../images/photos/img11.jpg";
+import image12 from "../../images/photos/img12.jpg";
+import image13 from "../../images/photos/img13.jpg";
+import image14 from "../../images/photos/img14.jpg";
+import image15 from "../../images/photos/img15.jpg";
+import image16 from "../../images/photos/img16.jpg";
+
+// 画像の配列
+const imageArray = [
+  image01,
+  image02,
+  image03,
+  image04,
+  image05,
+  image06,
+  image07,
+  image08,
+  image09,
+  image10,
+  image11,
+  image12,
+  image13,
+  image14,
+  image15,
+  image16,
+]
+
+// youtubeの動画の配列
+const youtubeArray = [
+  "https://www.youtube.com/embed/JulrXPr19hs?si=c8BNW3CTz93pn7CZ",
+  "https://www.youtube.com/embed/-9bB00XShWQ?si=3qnYZeDM23dXggC7",
+  "https://www.youtube.com/embed/bokgQhFoMjY?si=bFfR-TBkYw_0Ht6W",
+  "https://www.youtube.com/embed/3APTe-VubOI?si=KYzPSxPGYmeup97a",
+]
+---
+
+<Layout pageTitle="Photos">
+  <div class="imageGallery">
+    <div class="container">
+      <ul>
+        {imageArray.map((photos, index) => {
+          return (
+            <li>
+              <div class="imgWrap">
+                <img
+                  src={photos.src}
+                  alt=""
+                />
+              </div>
+              {index === 0 && (
+                <a href="#caption" class="captionMark">
+                  *
+                </a>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+      <p id="caption" class="caption paragraph -caption">
+        Primošten (Croatia), October 3, 2011
+        <br />
+        Others: Alan's home, November 19, 2013
+      </p>
+    </div>
+  </div>
+  <Section title="Useful Links">
+    <p class="linksText">
+      ‘Shapes of Soap Films’: Triply-Periodic Minimal Surfaces (Alan H.
+      Schoen)
+    </p>
+    <ul class="links">
+      {youtubeArray.map((url, index) => {
+        return (
+          <li>
+            <iframe
+              src={url}
+              title={`part${index + 1}`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <div class="linksTitle">Part{index + 1}</div>
+          </li>
+        );
+      })}
+    </ul>
+  </Section>
+</Layout>
+
+<style lang="scss">
+	@import "../../styles/mq.scss";
+
+  .imageGallery {
+    padding: 56px 0 0;
+    position: relative;
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 24px;
+      @include mq() {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      li {
+        height: 150px;
+        position: relative;
+        background-color: #ddd;
+        @include mq() {
+          height: 200px;
+        }
+        .imgWrap {
+          height: 100%;
+          overflow: hidden;
+          position: relative;
+        }
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        // 1つめだけ注釈表示
+        .captionMark {
+          font-size: 24px;
+          font-weight: 700;
+          position: absolute;
+          top: -30px;
+          right: 0;
+        }
+      }
+    }
+
+    .caption {
+      margin-top: 24px;
+    }
+  }
+
+  .linksText {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .links {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 24px;
+    margin-bottom: 56px;
+    iframe {
+      width: 100%;
+    }
+    .linksTitle {
+      font-weight: 700;
+      text-align: center;
+    }
+    @include mq() {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

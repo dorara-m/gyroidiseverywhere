@@ -1,0 +1,168 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+import image01 from "../../images/venue/img01.jpg";
+import image02 from "../../images/venue/img02.jpg";
+import image03 from "../../images/venue/img03.jpg";
+import imageMap from "../../images/venue/map01.jpg";
+import imageReport from "../../images/venue/report01.jpg";
+
+const links = [
+  {
+    name: "Campus Location",
+    link: "https://www.kindai.ac.jp/english/visit/",
+  },
+  {
+    name: "Route",
+    link: "https://www.kindai.ac.jp/english/files/visit/visit.pdf",
+  },
+  {
+    name: "Kindai University",
+    link: "https://www.kindai.ac.jp/english/",
+  },
+  {
+    name: "Osaka",
+    link: "https://www.japan.travel/en/destinations/kansai/osaka/",
+  },
+];
+---
+
+<Layout pageTitle="Venue">
+  <div class="container">
+    <div class="items">
+      <div class="item">
+        <h2>Lecture Hall</h2>
+        <div class="text">November Hall 2F (Small hall)</div>
+        <div class="img">
+          <img src={image01.src} alt="" />
+        </div>
+      </div>
+      <div class="item">
+        <h2>Posters</h2>
+        <div class="text">BLOSSOM CAFÉ 3F</div>
+        <div class="img">
+          <img src={image02.src} alt="" />
+        </div>
+      </div>
+      <div class="item">
+        <h2>Cafes and Restaurant</h2>
+        <ul>
+          <li>
+            <div class="text">Academic theater 1F, 2F, 3F</div>
+            <div class="img">
+              <img src={image03.src} alt="" />
+            </div>
+          </li>
+          <li>
+            <div class="text">Restaurant and Bakery Cafe</div>
+            <div class="img">
+              <img src={imageReport.src} alt="" />
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="item">
+        <h2>Campus Map</h2>
+        <div class="img">
+          <img src={imageMap.src} alt="" />
+        </div>
+      </div>
+    </div>
+    <ul class="links">
+      {links.map((link) => {
+        return (
+          <li>
+            <div class="title">{link.name}</div>
+            <a href={link.link} target="_blank" rel="noopener noreferrer">
+              Visit Link
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</Layout>
+
+<style lang="scss">
+	@import "../../styles/mq.scss";
+
+  .items {
+    padding: 32px 0;
+    display: grid;
+    grid-gap: 20px;
+    @include mq() {
+      padding: 56px 0;
+      grid-gap: 40px;
+      grid-template-areas: "itemA itemB" "itemC itemC" "itemD itemD";
+    }
+  }
+  .item {
+    @include mq() {
+      &:nth-child(1) {
+        grid-area: itemA;
+      }
+      &:nth-child(2) {
+        grid-area: itemB;
+      }
+      &:nth-child(3) {
+        grid-area: itemC;
+      }
+      &:nth-child(4) {
+        grid-area: itemD;
+      }
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      @include mq() {
+        font-size: 24px;
+      }
+    }
+    .img {
+      margin-top: 16px;
+    }
+    .text {
+      font-size: 16px;
+      @include mq() {
+        font-size: 20px;
+      }
+    }
+
+    ul {
+      display: flex;
+      gap: 40px;
+      li {
+        flex-basis: 50%;
+      }
+    }
+  }
+  .links {
+    li + li {
+      margin-top: 24px;
+    }
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+      @include mq() {
+        font-size: 24px;
+      }
+    }
+    a {
+      margin-top: 8px;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 0 40px;
+      height: 50px;
+      display: inline-flex;
+      align-items: center;
+      font-size: 18px;
+      transition: 0.3s;
+      &:hover {
+        background-color: #222;
+        color: #fff;
+      }
+    }
+    padding-bottom: 56px;
+  }
+</style>
