@@ -118,7 +118,7 @@ import imageLogo from "../images/gyroid-logo.png";
 			header.classList.remove('hidden');
 		}
 		// スクロールでヘッダースタイル変更
-		const pageHeader = document.querySelector('.pageHeader');
+		const pageHeader = document.querySelector('.pageHeader') as HTMLElement | null;
 		if (pageHeader) {
 			const handleScroll = () => {
 				// ヘッダー固定位置は、ページヘッダーの高さ - ヘッダーの高さ
