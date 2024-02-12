@@ -71,9 +71,12 @@ const youtubeArray = [
         })}
       </ul>
       <p id="caption" class="caption paragraph -caption">
-        Primošten (Croatia), October 3, 2011
-        <br />
-        Others: Alan's home, November 19, 2013
+        <span class="mark">*</span>
+        <span>
+          Primošten (Croatia), October 3, 2011
+          <br />
+          Others: Alan's home, November 19, 2013
+        </span>
       </p>
     </div>
   </div>
@@ -146,6 +149,11 @@ const youtubeArray = [
 
     .caption {
       margin-top: 24px;
+      display: flex;
+      .mark {
+        font-weight: bold;
+        margin-right: 8px;
+      }
     }
   }
 
