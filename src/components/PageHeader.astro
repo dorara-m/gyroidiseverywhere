@@ -50,7 +50,7 @@ const { title } = Astro.props;
 
 <script>
 	// homeでは非表示
-	if (location.pathname === '/') {
+	if (location.pathname === import.meta.env.BASE_URL) {
 		document.querySelector('.pageHeader')?.classList.add('hidden');
 	}
 </script>

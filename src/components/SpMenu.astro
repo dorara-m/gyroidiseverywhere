@@ -2,7 +2,7 @@
 import { menuList } from "../menuList";
 
 const lists = [...menuList];
-lists.unshift({ name: "Home", path: "/" });
+lists.unshift({ name: "Home", path: import.meta.env.BASE_URL });
 ---
 
 <div class="spMenu">
@@ -26,7 +26,7 @@ lists.unshift({ name: "Home", path: "/" });
 					return (
 						<li>
 							<a
-								href={menu.path}
+								href={menu.name === "Home" ? menu.path : `${import.meta.env.BASE_URL}${menu.path}`}
 							>{menu.name}</a>
 						</li>
 					);

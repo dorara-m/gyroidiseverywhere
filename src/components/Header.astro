@@ -4,7 +4,7 @@ import imageLogo from "../images/gyroid-logo.png";
 ---
 
 <header>
-	<a href="/" class="logo">
+	<a href={import.meta.env.BASE_URL} class="logo">
 		<div class="img">
 			<img src={imageLogo.src} alt="" />
 		</div>
@@ -19,7 +19,7 @@ import imageLogo from "../images/gyroid-logo.png";
 				return (
 					<li>
 						<a
-							href={menu.path}
+							href={import.meta.env.BASE_URL + menu.path}
 							set:html={menu.forHeader ? menu.forHeader : menu.name}
 						></a>
 					</li>
@@ -130,7 +130,7 @@ import imageLogo from "../images/gyroid-logo.png";
 					header.classList.remove('fixed');
 				}
 			};
-			window.location.pathname !== "/" && window.addEventListener("scroll", handleScroll);
+			window.location.pathname !== import.meta.env.BASE_URL && window.addEventListener("scroll", handleScroll);
 		}
 	}
 </script>
