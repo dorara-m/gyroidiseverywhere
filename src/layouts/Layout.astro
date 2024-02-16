@@ -5,6 +5,9 @@ interface Props {
 
 const { pageTitle } = Astro.props;
 const siteTitle = 'Gyroid is Everywhere';
+// topと下層のtitle出し分け
+const metaTitle = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
+const mataDescription = 'Conference Website “Alan Schoen 100th birth anniversary - Gyroid is everywhere” from November 19 to November 22, 2024, at Kindai University, Osaka, Japan.';
 
 import Header from '../components/Header.astro';
 import SpMenu from '../components/SpMenu.astro';
@@ -16,12 +19,17 @@ import Footer from '../components/Footer.astro';
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="this is gyroidiseverywhere site." />
+		<meta name="description" content={mataDescription} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" href=`${import.meta.env.BASE_URL}favicon.ico` />
+		<meta property="og:site_name" content={siteTitle} >
+		<meta property="og:type" content={pageTitle ? 'article' : 'website'} >
+		<meta property="og:url" content="https://www.phys.kindai.ac.jp/gyroidiseverywhere/" >
+		<meta property="og:title" content={metaTitle} >
+		<meta property="og:description" content={mataDescription} >
+		<meta property="og:image" content={'https://www.phys.kindai.ac.jp/gyroidiseverywhere/ogp.jpg'} /> 
 		<meta name="generator" content={Astro.generator} />
-		<!-- topと下層のtitle出し分け -->
-		<title>{pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle}</title>
+		<title>{metaTitle}</title>
 	</head>
 	<body class="body">
 		<Header />
