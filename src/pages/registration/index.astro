@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Section from '../../components/Section.astro';
+import Button from '../../components/Button.astro';
 ---
 
 <Layout pageTitle="Registration">
@@ -52,6 +53,9 @@ import Section from '../../components/Section.astro';
       </tbody>
     </table>
     <div class="tableCaption">*All-inclusive</div>
+    <div class="formBtn">
+      <Button href='https://officepolaris.co.jp/form/view.php?id=78602' text='Registration form' />
+    </div>
   </Section>
 </Layout>
 
@@ -66,7 +70,7 @@ import Section from '../../components/Section.astro';
     background-color: #fff;
     border-radius: 5px;
     overflow: hidden;
-    font-family: "Roboto", sans-serif;
+    font-family: var(--font-en2);
     font-size: 14px;
     table-layout: fixed;
     word-wrap: break-word;
@@ -100,5 +104,9 @@ import Section from '../../components/Section.astro';
   .tableCaption {
     font-size: 0.8em;
     padding: 10px;
+  }
+
+  .formBtn {
+    margin-top: 32px;
   }
 </style>

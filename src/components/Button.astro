@@ -1,0 +1,40 @@
+---
+interface Props {
+	text: string;
+  href: string;
+}
+
+const { text, href } = Astro.props;
+---
+
+<div class="hoverBg">
+  <a href={href} target="_blank" rel="noopener noreferrer">{text}</a>
+</div>
+
+<style lang="scss">
+	@import "../styles/mq.scss";
+
+  .hoverBg {
+    height: 60px;
+    display: flex;
+    align-items: center;
+  }
+
+	a {
+    text-decoration: none;
+    padding: 0 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    transition: border 0.1s ease-in-out;
+    border-bottom: 4px solid #fbb7b7;
+    color: #ec5151;
+    background-color: #ffe5e5;
+    font-family: var(--font-en2);
+    font-weight: bold;
+    &:hover {
+      border-bottom-width: 0;
+    }
+	}
+</style>
