@@ -1,6 +1,6 @@
 ---
 interface Props {
-	title: string;
+	title?: string;
 	bg?: boolean;
 	h3?: boolean;
 }
@@ -13,7 +13,7 @@ const { title,bg,h3 } = Astro.props;
 >
 	{!h3 ? (
 		<div class="container">
-			<h2>{title}</h2>
+			{title && <h2>{title}</h2>}
 			<slot />
 		</div>
 	) : (
