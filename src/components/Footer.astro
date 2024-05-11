@@ -3,44 +3,47 @@ import imageGyroid from "../images/home/gyroid.png";
 ---
 
 <footer class="footer">
-	<div class="container">
-		<div class="copyright">© 2024 Tomonari Dotera</div>
-		<div class="logo">
-			<img src={imageGyroid.src} alt="">
-		</div>
-	</div>
+  <div class="container">
+    <div class="copyright">© 2024 Tomonari Dotera</div>
+    <div class="logo">
+      <img src={imageGyroid.src} alt="" />
+    </div>
+  </div>
 </footer>
 
 <style lang="scss">
-	@import "../styles/mq.scss";
+  @import "../styles/mq.scss";
 
-	.footer {
-		margin-top: auto;
-		background-color: #222;
-		padding: 20px 0;
-		text-align: center;
-		font-family: var(--font-heading);
-		@include mq() {
-			padding: 30px 0;
-		}
-	}
+  .footer {
+    margin-top: auto;
+    background-color: #222;
+    padding: 20px 0;
+    text-align: center;
+    font-family: var(--font-heading);
+    @include mq() {
+      padding: 30px 0;
+    }
+  }
 
-	.copyright {
-		font-size: 16px;
-		color: #fff;
-	}
+  .copyright {
+    font-size: 16px;
+    color: #fff;
+  }
 
-	.logo {
-		width: 50px;
-		margin-right: auto;
-		margin-left: auto;
-	}
+  .logo {
+    width: 50px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 </style>
 
 <script>
-	// homeでは非表示
-	if (location.pathname === import.meta.env.BASE_URL) {
-		document.querySelector('.footer')?.classList.add('hidden');
-	}
+  // homeでは非表示 ※日本語版(ja/)も含める
+  const homePath = import.meta.env.BASE_URL;
+  if (
+    location.pathname === homePath ||
+    location.pathname === homePath + "ja/"
+  ) {
+    document.querySelector(".footer")?.classList.add("hidden");
+  }
 </script>
-

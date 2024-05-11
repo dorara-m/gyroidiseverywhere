@@ -1,144 +1,152 @@
 ---
 interface Props {
-	pageTitle?: string;
+  pageTitle?: string;
+  lang?: string;
 }
 
-const { pageTitle } = Astro.props;
-const siteTitle = 'Gyroid is Everywhere';
+const { pageTitle, lang } = Astro.props;
+const siteTitle = "Gyroid is Everywhere";
 // topと下層のtitle出し分け
 const metaTitle = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
-const mataDescription = 'Conference Website “Alan Schoen 100th birth anniversary - Gyroid is everywhere” from November 19 to November 22, 2024, at Kindai University, Osaka, Japan.';
+const mataDescription =
+  "Conference Website “Alan Schoen 100th birth anniversary - Gyroid is everywhere” from November 19 to November 22, 2024, at Kindai University, Osaka, Japan.";
 
-import Header from '../components/Header.astro';
-import SpMenu from '../components/SpMenu.astro';
-import PageHeader from '../components/PageHeader.astro';
-import Footer from '../components/Footer.astro';
+import Header from "../components/Header.astro";
+import SpMenu from "../components/SpMenu.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={mataDescription} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" href=`${import.meta.env.BASE_URL}favicon.ico` />
-		<meta property="og:site_name" content={siteTitle} >
-		<meta property="og:type" content={pageTitle ? 'article' : 'website'} >
-		<meta property="og:url" content="https://www.phys.kindai.ac.jp/gyroidiseverywhere/" >
-		<meta property="og:title" content={metaTitle} >
-		<meta property="og:description" content={mataDescription} >
-		<meta property="og:image" content={'https://www.phys.kindai.ac.jp/gyroidiseverywhere/ogp.jpg'} /> 
-		<meta name="generator" content={Astro.generator} />
-		<title>{metaTitle}</title>
-	</head>
-	<body class="body">
-		<Header />
-		<SpMenu />
-		<main>
-			<PageHeader title={pageTitle || ''} />
-			<slot />
-		</main>
-		<Footer />
-	</body>
+<html lang=`${lang ? lang : 'en'}`>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={mataDescription} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href=`${import.meta.env.BASE_URL}favicon.ico` />
+    <meta property="og:site_name" content={siteTitle} />
+    <meta property="og:type" content={pageTitle ? "article" : "website"} />
+    <meta
+      property="og:url"
+      content="https://www.phys.kindai.ac.jp/gyroidiseverywhere/"
+    />
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={mataDescription} />
+    <meta
+      property="og:image"
+      content={"https://www.phys.kindai.ac.jp/gyroidiseverywhere/ogp.jpg"}
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>{metaTitle}</title>
+  </head>
+  <body class=`body ${lang && lang}`>
+    <Header />
+    <SpMenu />
+    <main>
+      <PageHeader title={pageTitle || ""} />
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
 
 <style is:global lang="scss">
-	@import "../styles/reset.scss";
-	:root {
-		--font-en: Times, serif;
-		--font-heading: 'Oswald', sans-serif;
-		--font-en2: 'Roboto', sans-serif;
-		--color-text: #454142;
-		--color-border: #a2a3a8;
-		--color-main: rgb(255, 42, 94);
-		--color-sub: rgb(255, 140, 69);
-	}
+  @import "../styles/reset.scss";
+  :root {
+    --font-en: Times, serif;
+    --font-heading: "Oswald", sans-serif;
+    --font-en2: "Roboto", sans-serif;
+		--font-ja: "Noto Sans JP", sans-serif;
+    --color-text: #454142;
+    --color-border: #a2a3a8;
+    --color-main: rgb(255, 42, 94);
+    --color-sub: rgb(255, 140, 69);
+  }
 
-	// reset.cssの優先度が強いので.body内で上書き
+  // reset.cssの優先度が強いので.body内で上書き
 
-	
+  .body {
+    font-family: var(--font-en);
+    color: var(--color-text);
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+		&.ja {
+      font-family: var(--font-ja);
+    }
+    img {
+      max-width: 100%;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    // reset.cssを別のもの使うか検討
+    button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font: inherit;
+      padding: 0;
+    }
+    .container {
+      padding: 0 24px;
+      max-width: 1080px;
+      margin-right: auto;
+      margin-left: auto;
+    }
 
-	.body {
-		font-family: var(--font-en);
-		color: var(--color-text);
-		line-height: 1.5;
-		letter-spacing: 0.04em;
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-		img {
-			max-width: 100%;
-		}
-		a {
-			color: inherit;
-			text-decoration: none;
-		}
-		// reset.cssを別のもの使うか検討
-		button {
-			border: none;
-			background: none;
-			cursor: pointer;
-			font: inherit;
-			padding: 0;
-		}
-		.container {
-			padding: 0 24px;
-			max-width: 1080px;
-			margin-right: auto;
-			margin-left: auto;
-		}
+    // コンポーネント化検討
+    .paragraph {
+      & + .paragraph {
+        margin-top: 24px;
+      }
+      strong {
+        font-weight: bold;
+        // fontファイルimport必要かも
+        font-family: "Roboto", sans-serif;
+      }
+      &.-caption {
+        font-size: 0.8em;
+      }
+      a {
+        text-decoration: underline;
+      }
+    }
+    .list {
+      list-style: disc;
+      padding-left: 20px;
+      li + li {
+        margin-top: 8px;
+      }
+    }
+    ol {
+      margin-top: 8px;
+      padding-left: 1.4em;
+      > li {
+        counter-increment: item;
+        text-indent: -1.4em;
+        &::before {
+          content: counter(item) ")";
+          margin-right: 8px;
+        }
+        & + li {
+          margin-top: 8px;
+        }
+      }
+    }
 
-		// コンポーネント化検討
-		.paragraph {
-			& + .paragraph {
-				margin-top: 24px;
-			}
-			strong {
-				font-weight: bold;
-				// fontファイルimport必要かも
-				font-family: "Roboto", sans-serif;
-			}
-			&.-caption {
-				font-size: 0.8em;
-			}
-			a {
-				text-decoration: underline;
-			}
-		}
-		.list {
-			list-style: disc;
-			padding-left: 20px;
-			li + li {
-				margin-top: 8px;
-			}
-		}
-		ol {
-			margin-top: 8px;
-			padding-left: 1.4em;
-			> li {
-				counter-increment: item;
-				text-indent: -1.4em;
-				&::before {
-					content: counter(item) ")";
-					margin-right: 8px;
-				}
-				& + li {
-					margin-top: 8px;
-				}
-			}
-		}
+    .hidden {
+      display: none;
+    }
 
-		.hidden {
-			display: none;
-		}
-
-		.hiddenSp {
-			display: block;
-			@media screen and (max-width: 768px) {
-				display: none;
-			}
-		}
-	}
-
-
+    .hiddenSp {
+      display: block;
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
 </style>

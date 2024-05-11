@@ -4,133 +4,141 @@ import imageLogo from "../images/gyroid-logo.png";
 ---
 
 <header>
-	<a href={import.meta.env.BASE_URL} class="logo">
-		<div class="img">
-			<img src={imageLogo.src} alt="" />
-		</div>
-		<div class="head">Gyroid is everywhere</div>
-		<div class="sub">
-			Alan Schoen 100th Anniversary 11/19-22/2024
-		</div>
-	</a>
-	<div class="menu">
-		<ul>
-			{menuList.map((menu) => {
-				return (
-					<li>
-						<a
-							href={import.meta.env.BASE_URL + menu.path}
-							set:html={menu.forHeader ? menu.forHeader : menu.name}
-						></a>
-					</li>
-				);
-			})}
-		</ul>
-	</div>
+  <a href={import.meta.env.BASE_URL} class="logo">
+    <div class="img">
+      <img src={imageLogo.src} alt="" />
+    </div>
+    <div class="head">Gyroid is everywhere</div>
+    <div class="sub">Alan Schoen 100th Anniversary 11/19-22/2024</div>
+  </a>
+  <div class="menu">
+    <ul>
+      {
+        menuList.map((menu) => {
+          return (
+            <li>
+              <a
+                href={import.meta.env.BASE_URL + menu.path}
+                set:html={menu.forHeader ? menu.forHeader : menu.name}
+              />
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
 </header>
 
 <style lang="scss">
-	header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		height: 78px;
-		padding: 0 16px;
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		z-index: 3;
-		color: #fff;
-		font-family: var(--font-heading);
-		&.hidden {
-			display: none;
-		}
-		&.fixed {
-			background-color: #fff;
-			box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
-			color: var(--color-main);
-			ul li {
-				color: var(--color-text);
-			}
-			ul li:not(:last-child) {
-				border-color: var(--color-border);
-			}
-		}
-	}
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 78px;
+    padding: 0 16px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    color: #fff;
+    font-family: var(--font-heading);
+    &.hidden {
+      display: none;
+    }
+    &.fixed {
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.3);
+      color: var(--color-main);
+      ul li {
+        color: var(--color-text);
+      }
+      ul li:not(:last-child) {
+        border-color: var(--color-border);
+      }
+    }
+  }
 
-	.logo {
-		display: grid;
-		grid-gap: 7px;
-		grid-template-areas: "itemA itemB" "itemA itemC";
-		line-height: 1;
-		transition: 0.3s;
-		&:hover {
-			opacity: 0.6;
-		}
-		.img {
-			grid-area: itemA;
-			width: 48px;
-			height: 48px;
-		}
-		.head {
-			grid-area: itemB;
-			font-size: 24px;
-			font-weight: bold;
-		}
-		.sub {
-			grid-area: itemC;
-			font-size: 14px;
-		}
-	}
+  .logo {
+    display: grid;
+    grid-gap: 7px;
+    grid-template-areas: "itemA itemB" "itemA itemC";
+    line-height: 1;
+    transition: 0.3s;
+    &:hover {
+      opacity: 0.6;
+    }
+    .img {
+      grid-area: itemA;
+      width: 48px;
+      height: 48px;
+    }
+    .head {
+      grid-area: itemB;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .sub {
+      grid-area: itemC;
+      font-size: 14px;
+    }
+  }
 
-	.menu {
-		ul {
-			display: flex;
-			li {
-				line-height: 1.3;
-				font-size: 18px;
-				padding: 0 18px;
-				text-align: center;
-				display: flex;
-				align-items: center;
-				&:not(:last-child) {
-					border-right: 1px solid #fff;
-				}
-				a {
-					transition: 0.3s;
-					&:hover {
-						opacity: 0.6;
-					}
-				}
-			}
-		}
-	}
+  .menu {
+    ul {
+      display: flex;
+      li {
+        line-height: 1.3;
+        font-size: 18px;
+        padding: 0 18px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        &:not(:last-child) {
+          border-right: 1px solid #fff;
+        }
+        a {
+          transition: 0.3s;
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+  }
 </style>
 
 <script>
-	const header = document.querySelector('header');
-	if (header) {
-		// 画面幅が687px以下の場合は非表示
-		if (window.innerWidth <= 687) {
-			header.classList.add('hidden');
-		} else {
-			header.classList.remove('hidden');
-		}
-		// スクロールでヘッダースタイル変更
-		const pageHeader = document.querySelector('.pageHeader') as HTMLElement | null;
-		if (pageHeader) {
-			const handleScroll = () => {
-				// ヘッダー固定位置は、ページヘッダーの高さ - ヘッダーの高さ
-				// @todo ここのエラー気になる
-				const fixedPos = pageHeader.offsetHeight - header.offsetHeight;
-				if (window.scrollY > fixedPos) {
-					header.classList.add('fixed');
-				} else {
-					header.classList.remove('fixed');
-				}
-			};
-			window.location.pathname !== import.meta.env.BASE_URL && window.addEventListener("scroll", handleScroll);
-		}
-	}
+  const header = document.querySelector("header");
+  if (header) {
+    // 画面幅が687px以下の場合は非表示
+    if (window.innerWidth <= 687) {
+      header.classList.add("hidden");
+    } else {
+      header.classList.remove("hidden");
+    }
+    // スクロールでヘッダースタイル変更
+    const pageHeader = document.querySelector(
+      ".pageHeader"
+    ) as HTMLElement | null;
+    if (pageHeader) {
+      const handleScroll = () => {
+        // ヘッダー固定位置は、ページヘッダーの高さ - ヘッダーの高さ
+        // @todo ここのエラー気になる
+        const fixedPos = pageHeader.offsetHeight - header.offsetHeight;
+        if (window.scrollY > fixedPos) {
+          header.classList.add("fixed");
+        } else {
+          header.classList.remove("fixed");
+        }
+      };
+      // homeと/ja以外のページでスクロールイベントを発火
+      if (
+        location.pathname !== import.meta.env.BASE_URL &&
+        !location.pathname.startsWith(`${import.meta.env.BASE_URL}ja/`)
+      ) {
+        window.addEventListener("scroll", handleScroll);
+      }
+    }
+  }
 </script>

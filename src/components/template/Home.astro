@@ -1,0 +1,175 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import imageProf from "../../images/home/prof.png";
+import imageGyroid from "../../images/home/gyroid.png";
+import ToggleLang from "../element/toggleLang.astro";
+
+interface Props {
+  data: {
+    title: string;
+    subTitle: string;
+    dl: {
+      dt: string;
+      dd: string;
+    }[];
+  };
+  lang: string;
+}
+
+const { data, lang } = Astro.props as Props;
+---
+
+<Layout lang={lang}>
+  <div class=`home ${lang}`>
+    <div class="container">
+      <div class="textArea">
+        <h1>{data.title}</h1>
+        <div class="subTitle" set:html={data.subTitle} />
+        <dl>
+          {
+            data.dl.map((item) => (
+              <>
+                <dt>{item.dt}</dt>
+                <dd set:html={item.dd} />
+              </>
+            ))
+          }
+        </dl>
+      </div>
+      <div class="imgArea">
+        <div class="img01">
+          <img src={imageProf.src} alt="" />
+        </div>
+        <div class="img02">
+          <img src={imageGyroid.src} alt="" />
+        </div>
+      </div>
+    </div>
+    <ToggleLang lang={lang} />
+  </div>
+</Layout>
+
+<style lang="scss">
+  @import "../../styles/mq.scss";
+  .home {
+    min-height: calc(100vh);
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+    background: linear-gradient(
+      308deg,
+      var(--color-sub) 0%,
+      var(--color-sub) 30%,
+      var(--color-main) 100%
+    );
+    @include mq() {
+      padding-top: 78px;
+    }
+
+    &::before {
+      display: none;
+      content: "";
+      position: absolute;
+      width: 510px;
+      height: 314px;
+      background: url("../../images/home/bg01.png") no-repeat;
+      background-size: cover;
+      top: 94px;
+      right: 34px;
+      opacity: 0.6;
+      @include mq() {
+        display: block;
+      }
+    }
+    &::after {
+      content: "";
+      display: none;
+      position: absolute;
+      width: 190px;
+      height: 240px;
+      background: url("../../images/home/bg02.png") no-repeat;
+      background-size: cover;
+      bottom: 20px;
+      right: 413px;
+      opacity: 0.6;
+      @include mq() {
+        display: block;
+      }
+    }
+  }
+
+  .textArea {
+    padding: 100px 0 60px;
+    position: relative;
+    z-index: 2;
+    @include mq() {
+      padding-top: 60px;
+    }
+    h1 {
+      font-size: 33px;
+      font-weight: bold;
+      @include mq() {
+        font-size: 85px;
+      }
+      .home.ja & {
+        font-size: 25px;
+        @include mq() {
+          font-size: 70px;
+        }
+      }
+    }
+    .subTitle {
+      margin-top: 8px;
+      font-size: 24px;
+      @include mq() {
+        margin-top: 30px;
+        font-size: 64px;
+      }
+    }
+    dl {
+      margin-top: 200px;
+      font-size: 18px;
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 16px 0;
+      @include mq() {
+        gap: 25px 0;
+        grid-template-columns: 170px 1fr;
+        font-size: 28px;
+        margin-top: 50px;
+      }
+      dt {
+        text-decoration: underline;
+      }
+      dd {
+        word-break: break-all;
+      }
+    }
+  }
+
+  .imgArea {
+    .img01 {
+      position: absolute;
+      top: 260px;
+      left: 20px;
+      width: 140px;
+      @include mq() {
+        width: 268px;
+        left: auto;
+        right: 260px;
+      }
+    }
+    .img02 {
+      position: absolute;
+      width: 200px;
+      top: 140px;
+      right: 20px;
+      @include mq() {
+        width: 395px;
+        top: auto;
+        bottom: 50px;
+        right: 25px;
+      }
+    }
+  }
+</style>
