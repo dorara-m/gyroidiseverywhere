@@ -135,7 +135,7 @@ import imageLogo from "../images/gyroid-logo.png";
       // homeと/ja以外のページでスクロールイベントを発火
       if (
         location.pathname !== import.meta.env.BASE_URL &&
-        !location.pathname.startsWith(`${import.meta.env.BASE_URL}ja/`)
+        location.pathname !== `${import.meta.env.BASE_URL}ja/`
       ) {
         window.addEventListener("scroll", handleScroll);
       }

@@ -1,12 +1,13 @@
 ---
 interface Props {
   title: string;
+  lang?: string;
 }
 
-const { title } = Astro.props;
+const { title, lang } = Astro.props;
 ---
 
-<div class="pageHeader">
+<div class=`pageHeader ${lang}`>
   <div class="container">
     <h1>{title}</h1>
   </div>
@@ -25,6 +26,9 @@ const { title } = Astro.props;
     );
     @include mq() {
       padding: 102px 0 24px;
+    }
+    &.ja {
+      font-family: var(--font-ja);
     }
     h1 {
       font-size: 40px;
@@ -52,7 +56,7 @@ const { title } = Astro.props;
   // homeでは非表示
   if (
     location.pathname === import.meta.env.BASE_URL ||
-    location.pathname.startsWith(`${import.meta.env.BASE_URL}ja/`)
+    location.pathname === `${import.meta.env.BASE_URL}ja/`
   ) {
     document.querySelector(".pageHeader")?.classList.add("hidden");
   }

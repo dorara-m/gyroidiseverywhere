@@ -1,0 +1,133 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+import TextList from "../../components/TextList.astro";
+
+import imagelogo01 from "../../images/about/logo01.png";
+import imagelogo02 from "../../images/about/logo02.png";
+import imagelogo03 from "../../images/about/logo03.png";
+import ToggleLang from "../element/toggleLang.astro";
+
+interface Props {
+  data: {
+    pageTitle: string;
+    section1: {
+      title: string;
+      paragraphs: string[];
+      ol: string[];
+    };
+    section2: {
+      title: string;
+      sections: {
+        title: string;
+        list: string[];
+      }[];
+    };
+    section3: {
+      title: string;
+    };
+    section4: {
+      title: string;
+      list: string[];
+    };
+    section5: {
+      title: string;
+    };
+  };
+  lang: string;
+}
+
+const { data, lang } = Astro.props as Props;
+---
+
+<Layout pageTitle={data.pageTitle} lang={lang}>
+  <Section title={data.section1.title} lang={lang}>
+    <p class="paragraph">{data.section1.paragraphs[0]}</p>
+    <p class="paragraph">{data.section1.paragraphs[1]}</p>
+    <div class="paragraph">
+      <p>
+        {data.section1.paragraphs[2]}
+      </p>
+      <ol>
+        {data.section1.ol.map((item) => <li>{item}</li>)}
+      </ol>
+    </div>
+    <p class="paragraph">
+      {data.section1.paragraphs[3]}
+    </p>
+    {
+      data.section1.paragraphs[4] && (
+        <p class="paragraph -caption">{data.section1.paragraphs[4]}</p>
+      )
+    }
+  </Section>
+  <Section title={data.section2.title} bg lang={lang}>
+    {
+      data.section2.sections.map((section) => (
+        <Section title={section.title} h3>
+          <TextList list={section.list} />
+        </Section>
+      ))
+    }
+  </Section>
+  <Section title={data.section3.title} lang={lang}>
+    <ul class="support">
+      <li>
+        <a
+          href="https://www.toyotariken.jp/en/info/#institute"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={imagelogo01.src} alt="" />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.simonsfoundation.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={imagelogo02.src} alt="" />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.kindai.ac.jp/english/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={imagelogo03.src} alt="" />
+        </a>
+      </li>
+    </ul>
+  </Section>
+  <Section title={data.section4.title} bg lang={lang}>
+    <TextList strong list={data.section4.list} />
+  </Section>
+  <Section title={data.section5.title} lang={lang}>
+    <p class="paragraph">
+      <strong>gyroidiseverywhere@gmail.com</strong>
+    </p>
+  </Section>
+  <ToggleLang lang={lang} />
+</Layout>
+
+<style lang="scss">
+  @import "../../styles/mq.scss";
+
+  .support {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 16px;
+
+    @include mq() {
+      grid-template-columns: repeat(4, 1fr);
+      a {
+        transition: 0.3s;
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+</style>
