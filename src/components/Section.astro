@@ -41,8 +41,8 @@ const { title, bg, h3, lang } = Astro.props;
       }
     }
     &.ja h2,
-    h3 {
-      font-family: var(--font-ja) !important;
+    &.ja.h3 h3 {
+      font-family: var(--font-ja);
     }
 
     &.bg {

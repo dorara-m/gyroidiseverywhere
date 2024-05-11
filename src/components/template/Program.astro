@@ -1,0 +1,33 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+import TextList from "../../components/TextList.astro";
+import ToggleLang from "../element/toggleLang.astro";
+
+interface Props {
+  data: {
+    pageTitle: string;
+    h2: string;
+    sections: {
+      title: string;
+      list: string[];
+    }[];
+  };
+  lang: string;
+}
+
+const { data, lang } = Astro.props as Props;
+---
+
+<Layout pageTitle={data.pageTitle} lang={lang}>
+  <Section title={data.h2}>
+    {
+      data.sections.map((section) => (
+        <Section title={section.title} h3 lang={lang}>
+          <TextList list={section.list} />
+        </Section>
+      ))
+    }
+  </Section>
+  <ToggleLang lang={lang} />
+</Layout>

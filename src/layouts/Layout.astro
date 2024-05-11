@@ -38,6 +38,16 @@ import Footer from "../components/Footer.astro";
     />
     <meta name="generator" content={Astro.generator} />
     <title>{metaTitle}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=M+PLUS+1p"
+      rel="stylesheet"
+    />
   </head>
   <body class=`body ${lang && lang}`>
     <Header />
@@ -56,7 +66,7 @@ import Footer from "../components/Footer.astro";
     --font-en: Times, serif;
     --font-heading: "Oswald", sans-serif;
     --font-en2: "Roboto", sans-serif;
-    --font-ja: "Noto Sans JP", sans-serif;
+    --font-ja: "M PLUS 1p", sans-serif;
     --color-text: #454142;
     --color-border: #a2a3a8;
     --color-main: rgb(255, 42, 94);
