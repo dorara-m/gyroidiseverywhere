@@ -125,6 +125,12 @@ const { data, lang } = Astro.props as Props;
         margin-top: 30px;
         font-size: 64px;
       }
+      .home.ja & {
+        font-size: 18px;
+        @include mq() {
+          font-size: 50px;
+        }
+      }
     }
     dl {
       margin-top: 200px;
@@ -140,6 +146,10 @@ const { data, lang } = Astro.props as Props;
       }
       .home.ja & {
         font-size: 14px;
+        @include mq() {
+          font-size: 28px;
+          margin-top: 70px;
+        }
       }
       dt {
         text-decoration: underline;
