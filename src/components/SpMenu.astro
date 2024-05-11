@@ -6,146 +6,150 @@ lists.unshift({ name: "Home", path: import.meta.env.BASE_URL });
 ---
 
 <div class="spMenu">
-	<button
-		class="button"
-	>
-		<div></div>
-		<div></div>
-		<div></div>
-		<span>Menu</span>
-	</button>
-	<div
-		class="overlay"
-	>
-		<button class="close">
-			<div></div>
-		</button>
-		<div class="listWrap">
-			<ul class="list">
-				{lists.map((menu) => {
-					return (
-						<li>
-							<a
-								href={menu.name === "Home" ? menu.path : `${import.meta.env.BASE_URL}${menu.path}`}
-							>{menu.name}</a>
-						</li>
-					);
-				})}
-			</ul>
-		</div>
-	</div>
+  <button class="button">
+    <div></div>
+    <div></div>
+    <div></div>
+    <span>Menu</span>
+  </button>
+  <div class="overlay">
+    <button class="close">
+      <div></div>
+    </button>
+    <div class="listWrap">
+      <ul class="list">
+        {
+          lists.map((menu) => {
+            return (
+              <li>
+                <a
+                  href={
+                    menu.name === "Home"
+                      ? menu.path
+                      : `${import.meta.env.BASE_URL}${menu.path}`
+                  }
+                >
+                  {menu.name}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </div>
 </div>
 
 <style lang="scss">
-	.button {
-		position: absolute;
-		top: 28px;
-		right: 20px;
-		z-index: 3;
-		color: #fff;
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		div {
-			width: 32px;
-			height: 3px;
-			background-color: #fff;
-			border-radius: 2px;
-			+ div {
-				margin-top: 6px;
-			}
-		}
-		span {
-			margin-top: 2px;
-			font-size: 14px;
-			font-family: Arial, Helvetica, sans-serif;
-		}
-	}
+  .button {
+    position: absolute;
+    top: 28px;
+    right: 20px;
+    z-index: 3;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    div {
+      width: 32px;
+      height: 3px;
+      background-color: #fff;
+      border-radius: 2px;
+      + div {
+        margin-top: 6px;
+      }
+    }
+    span {
+      margin-top: 2px;
+      font-size: 14px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  }
 
-	.overlay {
-		display: none;
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: 4;
-		width: 100%;
-		height: 100vh;
-		background-color: rgba($color: #fff, $alpha: 0.85);
-		&.active {
-			display: block;
-		}
-	}
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba($color: #fff, $alpha: 0.85);
+    &.active {
+      display: block;
+    }
+  }
 
-	.close {
-		position: absolute;
-		top: 32px;
-		right: 25px;
-		div {
-			width: 24px;
-			height: 24px;
-			display: block;
-			&::before,
-			&::after {
-				content: "";
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				width: 100%;
-				height: 2px;
-				background-color: var(--color-text);
-			}
-			&::before {
-				transform: translate(-50%, -50%) rotate(45deg);
-			}
-			&::after {
-				transform: translate(-50%, -50%) rotate(-45deg);
-			}
-		}
-	}
+  .close {
+    position: absolute;
+    top: 32px;
+    right: 25px;
+    div {
+      width: 24px;
+      height: 24px;
+      display: block;
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 2px;
+        background-color: var(--color-text);
+      }
+      &::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+  }
 
-	.listWrap {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 100%;
-	}
+  .listWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
 
-	ul.list {
-		list-style: none;
-		li:not(:last-child) {
-			border-bottom: 1px solid #bbb;
-		}
-		a {
-			font-size: 20px;
-			height: 55px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-	}
+  ul.list {
+    font-family: var(--font-en2);
+    list-style: none;
+    li:not(:last-child) {
+      border-bottom: 1px solid #bbb;
+    }
+    a {
+      font-size: 20px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 </style>
 
 <script>
-	// 画面幅が687px以下の場合だけ表示
-	const spMenu = document.querySelector('.spMenu');
-	if (spMenu) {
-		if (window.innerWidth <= 687) {
-			spMenu.classList.remove('hidden');
-		} else {
-			spMenu.classList.add('hidden');
-		}
-	}
-	// 開閉ロジック
-	const button = document.querySelector('.spMenu .button');
-	const overlay = document.querySelector('.spMenu .overlay');
-	const close = document.querySelector('.spMenu .close');
-	if (button && overlay && close) {
-		button.addEventListener('click', () => {
-			overlay.classList.add('active');
-		});
-		close.addEventListener('click', () => {
-			overlay.classList.remove('active');
-		});
-	}
+  // 画面幅が687px以下の場合だけ表示
+  const spMenu = document.querySelector(".spMenu");
+  if (spMenu) {
+    if (window.innerWidth <= 687) {
+      spMenu.classList.remove("hidden");
+    } else {
+      spMenu.classList.add("hidden");
+    }
+  }
+  // 開閉ロジック
+  const button = document.querySelector(".spMenu .button");
+  const overlay = document.querySelector(".spMenu .overlay");
+  const close = document.querySelector(".spMenu .close");
+  if (button && overlay && close) {
+    button.addEventListener("click", () => {
+      overlay.classList.add("active");
+    });
+    close.addEventListener("click", () => {
+      overlay.classList.remove("active");
+    });
+  }
 </script>
-

@@ -52,7 +52,7 @@ const { data, lang } = Astro.props as Props;
 <style lang="scss">
   @import "../../styles/mq.scss";
   .home {
-    min-height: calc(100vh);
+    min-height: 100vh;
     position: relative;
     color: #fff;
     overflow: hidden;
@@ -99,7 +99,7 @@ const { data, lang } = Astro.props as Props;
   }
 
   .textArea {
-    padding: 100px 0 60px;
+    padding: 80px 0 60px;
     position: relative;
     z-index: 2;
     @include mq() {
@@ -138,6 +138,9 @@ const { data, lang } = Astro.props as Props;
         font-size: 28px;
         margin-top: 50px;
       }
+      .home.ja & {
+        font-size: 14px;
+      }
       dt {
         text-decoration: underline;
       }
@@ -150,7 +153,7 @@ const { data, lang } = Astro.props as Props;
   .imgArea {
     .img01 {
       position: absolute;
-      top: 260px;
+      top: 240px;
       left: 20px;
       width: 140px;
       @include mq() {
