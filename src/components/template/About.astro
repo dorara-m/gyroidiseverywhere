@@ -57,7 +57,15 @@ const { data, lang } = Astro.props as Props;
     </p>
     {
       data.section1.paragraphs[4] && (
-        <p class="paragraph -caption">{data.section1.paragraphs[4]}</p>
+        <p class="paragraph -caption">
+          <a
+            href="https://pubs.aip.org/physicstoday/online/42714"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {data.section1.paragraphs[4]}
+          </a>
+        </p>
       )
     }
   </Section>
