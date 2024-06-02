@@ -1,3 +1,20 @@
+# アラン・ショーン生誕100年記念国際シンポジウム公式サイト「Gyroid is everywhere」
+Astroを使って開発しています。
+
+## コマンド
+### 開発時
+```
+npm install
+npm run dev
+```
+### 本番公開時
+```
+npm run build
+```
+distディレクトリにビルドされた `gyroidiseverywhere` フォルダが生まれます。これをアップロードしてください。
+
+
+
 # Astro Starter Kit: Basics
 
 ```sh
