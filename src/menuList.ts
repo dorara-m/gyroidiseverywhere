@@ -13,9 +13,9 @@ export const menuList = [
     forHeader: "Abstract <br/>Submission",
   },
   {
-    name: "Registration & Accomodation",
+    name: "Registration & Accommodation",
     path: "registration/",
-    forHeader: "Registration & <br/>Accomodation",
+    forHeader: "Registration & <br/>Accommodation",
   },
   {
     name: "Venue",
