@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Section from "../../components/Section.astro";
 import Button from "../../components/Button.astro";
-import Dl from "../../components/parts/Dl.astro";
+import LinkList from "../../components/parts/LinkList.astro";
 ---
 
 <Layout pageTitle="Registration">
@@ -76,46 +76,39 @@ import Dl from "../../components/parts/Dl.astro";
       you prefer in or near Osaka. Kyoto, Nara, and Kobe are not too far away.
       You can go sightseeing there before or after the conference.
     </p>
-    <Dl
+    <LinkList
       list={[
         {
           title: "Hotel Bali Tower Osaka Tennoji",
-          text: "Hotel Bali Tower Osaka Tennoji - Official Site",
-          link: "https://www.balitower.jp/en/",
+          url: "https://www.balitower.jp/en/",
         },
         {
           title: "Hotel Trusty Osaka Abeno",
-          text: "Hotel Trusty Osaka Abeno | Hotel | RESORTTRUST group service site (transer.com)",
-          link: "https://www.rtg.jp.e.akp.hp.transer.com/hotels/trusty/osaka_a/",
+          url: "https://www.rtg.jp.e.akp.hp.transer.com/hotels/trusty/osaka_a/",
         },
         {
           title: "Miyako City Osaka Tennoji",
-          text: "Miyako City Osaka Tennoji | Official Website (miyakohotels.ne.jp)",
-          link: "https://global.miyakohotels.ne.jp/tennoji/",
+          url: "https://global.miyakohotels.ne.jp/tennoji/",
         },
         {
           title: "Via Inn Abeno Tennoji",
-          text: "VIA INN ABENO TENNOJI | JR WEST VIA INN HOTELS (Official)",
-          link: "https://www.viainn.com/en/abeno-t/",
+          url: "https://www.viainn.com/en/abeno-t/",
         },
         {
           title: "Osaka Marriott Miyako Hotel",
-          text: "Osaka Marriott Miyako Hotel | Official Website (miyakohotels.ne.jp)",
-          link: "https://global.miyakohotels.ne.jp/osaka-m-miyako/",
+          url: "https://global.miyakohotels.ne.jp/osaka-m-miyako/",
         },
         {
           title: "Smile Hotel Osaka Tnnnoji",
-          text: "Smile Hotel Osaka Tennoji [2024/3/20 OPEN] [the formula] (smile-hotels.com)",
-          link: "https://smile-hotels.com/hotels/show/osakatennoji",
+          url: "https://smile-hotels.com/hotels/show/osakatennoji",
         },
         {
           title: "APA Hotel Tennoji-Ekimae",
-          text: "APA Hotel Tennoji Ekimae | [Official] APA Hotels & Resorts | Business Hotel Reservation Site",
-          link: "https://www3.apahotel.com/ja/hotel/kansai/osaka/tennouji-ekimae/",
+          url: "https://www3.apahotel.com/ja/hotel/kansai/osaka/tennouji-ekimae/",
         },
         {
           title: "Toyoko Inn Osaka Abeno Tennoji",
-          text: "https://www.toyoko-inn.com/index.php/search/detail/00247/",
+          url: "https://www.toyoko-inn.com/index.php/search/detail/00247/",
         },
       ]}
     />

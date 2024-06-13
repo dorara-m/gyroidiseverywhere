@@ -1,0 +1,53 @@
+---
+import icon from "../../images/icon-external-link.png";
+
+interface Props {
+  list: {
+    title: string;
+    url: string;
+  }[];
+}
+
+const { list } = Astro.props;
+---
+
+<ul class="linkList">
+  {
+    list.map((item) => {
+      return (
+        <li>
+          <a href={item.url} target="_blank" rel="noopener noreferrer">
+            {item.title}
+            <img src={icon.src} alt="" />
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style lang="scss">
+  @import "../../styles/mq.scss";
+
+  .linkList {
+    margin-top: 32px;
+    font-family: var(--font-en2);
+    font-weight: bold;
+    li {
+      padding: 1em 0;
+    }
+    a {
+      display: inline-flex;
+      align-items: center;
+      transition: opacity 0.3s;
+      img {
+        margin-left: 8px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+    a:hover {
+      opacity: 0.8;
+    }
+  }
+</style>
