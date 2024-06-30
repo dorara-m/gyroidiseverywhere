@@ -1,0 +1,51 @@
+---
+interface Props {
+  title?: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+  overflow?: boolean;
+}
+
+const { title, image, overflow } = Astro.props;
+---
+
+<div class="simpleCard">
+  {title && <div class="simpleCard__title">{title}</div>}
+  <div class=`simpleCard__img ${overflow && '-overflow'}`>
+    <img src={image.src} alt={image.alt} />
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../styles/mq.scss";
+
+  .simpleCard {
+    box-sizing: border-box;
+    @include mq() {
+      display: inline-block;
+      max-width: 50%;
+    }
+
+    .simpleCard__title {
+      font-size: 16px;
+      @include mq() {
+        font-size: 20px;
+      }
+    }
+    .simpleCard__img {
+      margin-top: 16px;
+      aspect-ratio: 1.7 / 1;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      &.-overflow {
+        aspect-ratio: unset;
+      }
+    }
+  }
+</style>

@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from "../../layouts/Layout.astro";
 
 import image01 from "../../images/venue/img01.jpg";
 import imageHall from "../../images/venue/hall.jpg";
@@ -7,6 +7,7 @@ import image02 from "../../images/venue/img02.jpg";
 import image03 from "../../images/venue/img03.jpg";
 import imageMap from "../../images/venue/map01.jpg";
 import imageReport from "../../images/venue/report01.jpg";
+import SimpleCard from "../../components/parts/SimpleCard.astro";
 
 const links = [
   {
@@ -30,95 +31,84 @@ const links = [
 
 <Layout pageTitle="Venue">
   <div class="container">
-    <div class="items">
-      <div class="item">
+    <div class="sectionWrapper">
+      <section>
         <h2>Lecture Hall</h2>
-        <div class="text">November Hall</div>
-        <ul>
-          <li>
-            <div class="img">
-              <img src={image01.src} alt="" />
-            </div>
-          </li>
-          <li>
-            <div class="img">
-              <img src={imageHall.src} alt="" />
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="item">
+        <div class="description">November Hall</div>
+        <div class="cardWrapper">
+          <SimpleCard
+            image={{ src: image01.src, alt: "November Hallのイメージ画像1" }}
+          />
+          <SimpleCard
+            image={{ src: imageHall.src, alt: "November Hallのイメージ画像2" }}
+          />
+        </div>
+      </section>
+      <section>
         <h2>Posters</h2>
-        <div class="text">BLOSSOM CAFÉ 3F</div>
-        <div class="img">
-          <img src={image02.src} alt="" />
-        </div>
-      </div>
-      <div class="item">
+        <div class="description">BLOSSOM CAFÉ 3F</div>
+        <SimpleCard
+          image={{ src: image02.src, alt: "BLOSSOM CAFÉ 3Fのイメージ画像" }}
+        />
+      </section>
+      <section>
         <h2>Cafes and Restaurant</h2>
-        <ul>
-          <li>
-            <div class="text">Academic theater 1F, 2F, 3F</div>
-            <div class="img">
-              <img src={image03.src} alt="" />
-            </div>
-          </li>
-          <li>
-            <div class="text">Restaurant and Bakery Cafe</div>
-            <div class="img">
-              <img src={imageReport.src} alt="" />
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="item">
-        <h2>Campus Map</h2>
-        <div class="img map">
-          <img src={imageMap.src} alt="" />
+        <div class="cardWrapper">
+          <SimpleCard
+            title="Academic theater 1F, 2F, 3F"
+            image={{
+              src: image03.src,
+              alt: "Academic theater 1F, 2F, 3Fのイメージ画像",
+            }}
+          />
+          <SimpleCard
+            title="Restaurant and Bakery Cafe"
+            image={{
+              src: imageReport.src,
+              alt: "Restaurant and Bakery Cafeのイメージ画像",
+            }}
+          />
         </div>
-      </div>
+      </section>
+      <section>
+        <h2>Campus Map</h2>
+        <SimpleCard
+          image={{ src: imageMap.src, alt: "Campus Mapのイメージ画像" }}
+          overflow
+        />
+      </section>
     </div>
     <ul class="links">
-      {links.map((link) => {
-        return (
-          <li>
-            <div class="title">{link.name}</div>
-            <a href={link.link} target="_blank" rel="noopener noreferrer">
-              Visit Link
-            </a>
-          </li>
-        );
-      })}
+      {
+        links.map((link) => {
+          return (
+            <li>
+              <div class="title">{link.name}</div>
+              <a href={link.link} target="_blank" rel="noopener noreferrer">
+                Visit Link
+              </a>
+            </li>
+          );
+        })
+      }
     </ul>
   </div>
 </Layout>
 
 <style lang="scss">
-	@import "../../styles/mq.scss";
+  @import "../../styles/mq.scss";
 
-  .items {
+  .sectionWrapper {
     padding: 32px 0;
-    display: grid;
-    grid-gap: 20px;
     @include mq() {
       padding: 56px 0;
-      grid-gap: 40px;
-      grid-template-areas: "itemA itemA" "itemB noset" "itemC itemC" "itemD unset";
     }
   }
-  .item {
-    @include mq() {
-      &:nth-child(1) {
-        grid-area: itemA;
-      }
-      &:nth-child(2) {
-        grid-area: itemB;
-      }
-      &:nth-child(3) {
-        grid-area: itemC;
-      }
-      &:nth-child(4) {
-        grid-area: itemD;
+  section {
+    + section {
+      margin-top: 20px;
+      @include mq() {
+        margin-top: 40px;
       }
     }
 
@@ -129,31 +119,16 @@ const links = [
         font-size: 24px;
       }
     }
-    .img {
-      margin-top: 16px;
-      aspect-ratio: 1.7 / 1;
-      overflow: hidden;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      &.map {
-        aspect-ratio: unset;
-      }
-    }
-    .text {
+    .description {
       font-size: 16px;
       @include mq() {
         font-size: 20px;
       }
     }
-
-    ul {
-      display: flex;
-      gap: 40px;
-      li {
-        flex-basis: 50%;
+    .cardWrapper {
+      @include mq() {
+        display: flex;
+        gap: 32px;
       }
     }
   }
