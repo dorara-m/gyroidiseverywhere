@@ -7,6 +7,11 @@ import image02 from "../../images/venue/img02.jpg";
 import image03 from "../../images/venue/img03.jpg";
 import imageMap from "../../images/venue/map01.jpg";
 import imageReport from "../../images/venue/report01.jpg";
+import imageSumiyoshi from "../../images/venue/sumiyashiTaisha.jpg";
+import imageNoh from "../../images/venue/yamamotoNohTheater.jpg";
+import imageCastle from "../../images/venue/osakaCastle.jpg";
+import imageGeihinkan from "../../images/venue/osakaGeihinkan.jpg";
+
 import SimpleCard from "../../components/parts/SimpleCard.astro";
 
 const links = [
@@ -47,9 +52,11 @@ const links = [
       <section>
         <h2>Posters</h2>
         <div class="description">BLOSSOM CAFÉ 3F</div>
-        <SimpleCard
-          image={{ src: image02.src, alt: "BLOSSOM CAFÉ 3Fのイメージ画像" }}
-        />
+        <div class="cardWrapper">
+          <SimpleCard
+            image={{ src: image02.src, alt: "BLOSSOM CAFÉ 3Fのイメージ画像" }}
+          />
+        </div>
       </section>
       <section>
         <h2>Cafes and Restaurant</h2>
@@ -71,11 +78,46 @@ const links = [
         </div>
       </section>
       <section>
+        <h2>Excursion</h2>
+        <div class="cardWrapper">
+          <SimpleCard
+            title="Sumiyoshi Taisha"
+            image={{
+              src: imageSumiyoshi.src,
+              alt: "Sumiyoshi Taishaのイメージ画像",
+            }}
+          />
+          <SimpleCard
+            title="Yamamoto Noh Theater"
+            image={{
+              src: imageNoh.src,
+              alt: "Yamamoto Noh Theaterのイメージ画像",
+            }}
+          />
+          <SimpleCard
+            title="Osaka Castle"
+            image={{
+              src: imageCastle.src,
+              alt: "Osaka Castleのイメージ画像",
+            }}
+          />
+          <SimpleCard
+            title="Osaka Geihinkan"
+            image={{
+              src: imageGeihinkan.src,
+              alt: "Osaka Geihinkanのイメージ画像",
+            }}
+          />
+        </div>
+      </section>
+      <section>
         <h2>Campus Map</h2>
-        <SimpleCard
-          image={{ src: imageMap.src, alt: "Campus Mapのイメージ画像" }}
-          overflow
-        />
+        <div class="cardWrapper">
+          <SimpleCard
+            image={{ src: imageMap.src, alt: "Campus Mapのイメージ画像" }}
+            overflow
+          />
+        </div>
       </section>
     </div>
     <ul class="links">
@@ -122,13 +164,14 @@ const links = [
     .description {
       font-size: 16px;
       @include mq() {
-        font-size: 20px;
+        font-size: 18px;
       }
     }
     .cardWrapper {
       @include mq() {
-        display: flex;
+        display: grid;
         gap: 32px;
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   }

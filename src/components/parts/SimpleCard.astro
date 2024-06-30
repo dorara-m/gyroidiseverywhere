@@ -13,7 +13,7 @@ const { title, image, overflow } = Astro.props;
 
 <div class="simpleCard">
   {title && <div class="simpleCard__title">{title}</div>}
-  <div class=`simpleCard__img ${overflow && '-overflow'}`>
+  <div class=`simpleCard__img ${overflow ? '-overflow': ''}`>
     <img src={image.src} alt={image.alt} />
   </div>
 </div>
@@ -22,20 +22,17 @@ const { title, image, overflow } = Astro.props;
   @import "../../styles/mq.scss";
 
   .simpleCard {
+    margin-top: 8px;
     box-sizing: border-box;
-    @include mq() {
-      display: inline-block;
-      max-width: 50%;
-    }
 
     .simpleCard__title {
       font-size: 16px;
       @include mq() {
-        font-size: 20px;
+        font-size: 18px;
       }
     }
     .simpleCard__img {
-      margin-top: 16px;
+      margin-top: 8px;
       aspect-ratio: 1.7 / 1;
       overflow: hidden;
       img {
