@@ -1,0 +1,86 @@
+---
+interface Props {
+  thead: string[];
+  tbody: {
+    item1: string;
+    item2: string;
+    item3: string;
+  }[];
+}
+
+const { thead, tbody } = Astro.props;
+---
+
+<div class="tableWrap">
+  <table class="table">
+    <thead>
+      <tr>
+        {
+          thead.map((item) => {
+            return <th>{item}</th>;
+          })
+        }
+      </tr>
+    </thead>
+    <tbody>
+      {
+        tbody.map((item) => {
+          return (
+            <tr>
+              <td set:html={item.item1} />
+              <td set:html={item.item2} />
+              <td set:html={item.item3} />
+            </tr>
+          );
+        })
+      }
+    </tbody>
+  </table>
+</div>
+
+<style lang="scss">
+  @import "../../styles/mq.scss";
+  .tableWrap {
+    overflow: auto;
+    white-space: nowrap;
+    padding-bottom: 16px;
+  }
+  .table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    margin-top: 24px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: var(--font-en2);
+    font-size: 14px;
+    table-layout: fixed;
+    word-wrap: break-word;
+    @include mq() {
+      width: 80%;
+    }
+    thead {
+      background-color: #f5f5f5;
+      color: #333;
+      th {
+        padding: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        background: #eee;
+      }
+    }
+    tbody {
+      tr {
+        td {
+          padding: 10px;
+          border-bottom: 1px solid #ddd;
+        }
+      }
+    }
+  }
+</style>
