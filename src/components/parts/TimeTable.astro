@@ -7,7 +7,7 @@ import Table from "./Table.astro";
   <input id="day1" class="tab-switch" type="radio" name="tab" checked />
   <label class="tab-label" for="day1">11/19</label>
   <div class="tab-content">
-    <Table
+    <Table wide
       thead={["Time", "Contents", "Speakers"]}
       tbody={[
         {
@@ -108,7 +108,7 @@ import Table from "./Table.astro";
   <input id="day2" class="tab-switch" type="radio" name="tab" />
   <label class="tab-label" for="day2">11/20</label>
   <div class="tab-content">
-    <Table
+    <Table wide
       thead={["Time", "Contents", "Speakers"]}
       tbody={[
         {
@@ -189,7 +189,7 @@ import Table from "./Table.astro";
   <input id="day3" class="tab-switch" type="radio" name="tab" />
   <label class="tab-label" for="day3">11/21</label>
   <div class="tab-content">
-    <Table
+    <Table wide
       thead={["Time", "Contents", "Speakers"]}
       tbody={[
         {
@@ -241,7 +241,7 @@ import Table from "./Table.astro";
   <input id="day4" class="tab-switch" type="radio" name="tab" />
   <label class="tab-label" for="day4">11/22</label>
   <div class="tab-content">
-    <Table
+    <Table wide
       thead={["Time", "Contents", "Speakers"]}
       tbody={[
         {
@@ -306,11 +306,6 @@ import Table from "./Table.astro";
 
 <style lang="scss">
   @import "../../styles/mq.scss";
-
-  .table {
-    width: 100%;
-    margin: 0 auto;
-  }
 
   .tab-wrap {
     display: flex;
