@@ -64,9 +64,10 @@ const { thead, tbody, wide } = Astro.props;
     &.wide {
       width: 100%;
       overflow: visible;
+      table-layout: auto;
 
       @include mq() {
-        table-layout: auto;
+        table-layout: fixed;
       }
     }
     thead {
