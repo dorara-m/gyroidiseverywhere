@@ -3,58 +3,51 @@ import Layout from "../../layouts/Layout.astro";
 import Section from "../../components/Section.astro";
 import Button from "../../components/Button.astro";
 import LinkList from "../../components/parts/LinkList.astro";
+import Table from "../../components/parts/Table.astro";
 ---
 
 <Layout pageTitle="Registration">
   <Section title="Registration fees">
-    <div class="tableWrap">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Amount</th>
-            <th>Period</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Regular (super early)</td>
-            <td>25,000 JPY</td>
-            <td>March 20 - May 31</td>
-          </tr>
-          <tr>
-            <td>Regular (early)</td>
-            <td>30,000 JPY</td>
-            <td>June 1 - July 31</td>
-          </tr>
-          <tr>
-            <td>Regular (late)</td>
-            <td>35,000 JPY</td>
-            <td>August 1 - September 30 (participation only)</td>
-          </tr>
-          <tr>
-            <td>Student (super early)</td>
-            <td>8,000 JPY</td>
-            <td>March 20 - May 31</td>
-          </tr>
-          <tr>
-            <td>Student (early)</td>
-            <td>10,000 JPY</td>
-            <td>June 1 - July 31</td>
-          </tr>
-          <tr>
-            <td>Student (late)</td>
-            <td>12,000 JPY</td>
-            <td>August 1 - September 30 (participation only)</td>
-          </tr>
-          <tr>
-            <td>Accompany person</td>
-            <td>10,000 JPY</td>
-            <td>-</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <Table
+      thead={["Item", "Amount", "Period"]}
+      tbody={[
+        {
+          item1: "Regular (super early)",
+          item2: "25,000 JPY",
+          item3: "March 20 - May 31",
+        },
+        {
+          item1: "Regular (early)",
+          item2: "30,000 JPY",
+          item3: "June 1 - July 31",
+        },
+        {
+          item1: "Regular (late)",
+          item2: "35,000 JPY",
+          item3: "August 1 - September 30 (participation only)",
+        },
+        {
+          item1: "Student (super early)",
+          item2: "8,000 JPY",
+          item3: "March 20 - May 31",
+        },
+        {
+          item1: "Student (early)",
+          item2: "10,000 JPY",
+          item3: "June 1 - July 31",
+        },
+        {
+          item1: "Student (late)",
+          item2: "12,000 JPY",
+          item3: "August 1 - September 30 (participation only)",
+        },
+        {
+          item1: "Accompany person",
+          item2: "10,000 JPY",
+          item3: "-",
+        },
+      ]}
+    />
     <div class="tableCaption">*All-inclusive</div>
     <div class="formBtn">
       <Button

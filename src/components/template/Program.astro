@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Section from "../../components/Section.astro";
 import TextList from "../../components/TextList.astro";
 import ToggleLang from "../parts/ToggleLang.astro";
+import TimeTable from "../parts/TimeTable.astro";
 
 interface Props {
   data: {
@@ -28,6 +29,9 @@ const { data, lang } = Astro.props as Props;
         </Section>
       ))
     }
+  </Section>
+  <Section title="TimeTable">
+    <TimeTable />
   </Section>
   <ToggleLang lang={lang} />
 </Layout>
