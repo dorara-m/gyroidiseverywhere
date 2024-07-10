@@ -6,7 +6,7 @@ import Program from "../../../components/template/Program.astro";
   lang="ja"
   data={{
     pageTitle: "プログラム",
-    h2: "講演一覧",
+    h2_1: "講演一覧",
     sections: [
       {
         title: "チュートリアル講演（公開講座・登録不要）",
@@ -17,7 +17,9 @@ import Program from "../../../components/template/Program.astro";
       },
       {
         title: "ディスカッションリーダー",
-        list: ["ガード シュレーダーターク（マードック大学・教授） - あまねくジャイロイド"],
+        list: [
+          "ガード シュレーダーターク（マードック大学・教授） - あまねくジャイロイド",
+        ],
       },
       {
         title: "基調講演",
@@ -45,5 +47,22 @@ import Program from "../../../components/template/Program.astro";
         ],
       },
     ],
+    h2_2: "タイムテーブル",
+    h2_3: "参加者",
+    ateendee: {
+      thead: ["名前", "所属", "Style"],
+      tbody: [
+        {
+          item1: "Abdulaziz Alsenafi",
+          item2: "Kuwait University",
+          item3: "",
+        },
+        {
+          item1: "Toky Andriamanalina",
+          item2: "University of Potsdam",
+          item3: "",
+        },
+      ],
+    },
   }}
 />

@@ -4,15 +4,26 @@ import Section from "../../components/Section.astro";
 import TextList from "../../components/TextList.astro";
 import ToggleLang from "../parts/ToggleLang.astro";
 import TimeTable from "../parts/TimeTable.astro";
+import Table from "../parts/Table.astro";
 
 interface Props {
   data: {
     pageTitle: string;
-    h2: string;
+    h2_1: string;
     sections: {
       title: string;
       list: string[];
     }[];
+    h2_2: string;
+    h2_3: string;
+    ateendee: {
+      thead: string[];
+      tbody: {
+        item1: string;
+        item2: string;
+        item3: string;
+      }[];
+    };
   };
   lang: string;
 }
@@ -21,7 +32,7 @@ const { data, lang } = Astro.props as Props;
 ---
 
 <Layout pageTitle={data.pageTitle} lang={lang}>
-  <Section title={data.h2}>
+  <Section title={data.h2_1}>
     {
       data.sections.map((section) => (
         <Section title={section.title} h3 lang={lang}>
@@ -30,8 +41,11 @@ const { data, lang } = Astro.props as Props;
       ))
     }
   </Section>
-  <Section title="TimeTable">
+  <Section title={data.h2_2}>
     <TimeTable />
+  </Section>
+  <Section title={data.h2_3}>
+    <Table thead={data.ateendee.thead} tbody={data.ateendee.tbody} />
   </Section>
   <ToggleLang lang={lang} />
 </Layout>
