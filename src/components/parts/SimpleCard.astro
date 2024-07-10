@@ -1,6 +1,9 @@
 ---
+import externalIcon from "../../images/icon-external-link.png";
+
 interface Props {
   title?: string;
+  url?: string;
   image: {
     src: string;
     alt: string;
@@ -8,11 +11,24 @@ interface Props {
   overflow?: boolean;
 }
 
-const { title, image, overflow } = Astro.props;
+const { title, url, image, overflow } = Astro.props;
 ---
 
 <div class="simpleCard">
-  {title && <div class="simpleCard__title">{title}</div>}
+  {
+    title && (
+      <div class="simpleCard__title">
+        {url ? (
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            {title}
+            <img src={externalIcon.src} alt="" />
+          </a>
+        ) : (
+          title
+        )}
+      </div>
+    )
+  }
   <div class=`simpleCard__img ${overflow ? '-overflow': ''}`>
     <img src={image.src} alt={image.alt} />
   </div>
@@ -29,6 +45,21 @@ const { title, image, overflow } = Astro.props;
       font-size: 16px;
       @include mq() {
         font-size: 18px;
+      }
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: underline;
+        transition: opacity 0.3s;
+        img {
+          margin-left: 8px;
+          width: 18px;
+          height: 18px;
+        }
+        &:hover {
+          opacity: 0.6;
+        }
       }
     }
     .simpleCard__img {
