@@ -6,7 +6,7 @@ import Program from "../../components/template/Program.astro";
   lang="en"
   data={{
     pageTitle: "Program",
-    h2: "Speakers",
+    h2_1: "Speakers",
     sections: [
       {
         title: "Tutorial lectures (Open lectures w/o registration)",
@@ -35,8 +35,8 @@ import Program from "../../components/template/Program.astro";
           "Jacob Kirkensgaard (Copenhagen) - Hyperbolic Geometry",
           "Xiangbing Zeng (Sheffield) - Liquid Crystals",
           "Takahiro Ichikawa (TUAT) - Proton Conduction",
-		  "Rong-Ming Ho (Tsinghua) - NanoGyroid",
-		  "An-Chang Shi (McMaster) - Polymer Theory",
+          "Rong-Ming Ho (Tsinghua) - NanoGyroid",
+          "An-Chang Shi (McMaster) - Polymer Theory",
           "Kunio Awaga (Nagoya) - Gyroid Molecules",
           "Philipp Schönhöfer (Michigan) - Gyroid Simulation",
           "Justin Llandro (Sumitomo Chemical) - Gyroid Magnetics",
@@ -45,5 +45,22 @@ import Program from "../../components/template/Program.astro";
         ],
       },
     ],
+    h2_2: "Time Table",
+    h2_3: "Atendee",
+    ateendee: {
+      thead: ["Name", "Affiliation", "Style"],
+      tbody: [
+        {
+          item1: "Abdulaziz Alsenafi",
+          item2: "Kuwait University",
+          item3: "",
+        },
+        {
+          item1: "Toky Andriamanalina",
+          item2: "University of Potsdam",
+          item3: "",
+        },
+      ],
+    },
   }}
 />
