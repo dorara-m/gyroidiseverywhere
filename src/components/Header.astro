@@ -124,8 +124,9 @@ import imageLogo from "../images/gyroid-logo.png";
     if (pageHeader) {
       const handleScroll = () => {
         // ヘッダー固定位置は、ページヘッダーの高さ - ヘッダーの高さ
-        // @todo ここのエラー気になる
-        const fixedPos = header.offsetHeight;
+        // 15 = ロゴとヘッダーの間隔
+        // @todo ここのエラー気になる・実数値解消したい
+        const fixedPos = header.offsetHeight - 15;
         if (window.scrollY > fixedPos) {
           header.classList.add("fixed");
         } else {
