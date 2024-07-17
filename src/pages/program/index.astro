@@ -11,37 +11,93 @@ import Program from "../../components/template/Program.astro";
       {
         title: "Tutorial lectures (Open lectures w/o registration)",
         list: [
-          "Randall Kamien (UPENN) - Materials Geometry",
-          "Stephen Hyde (Sydney & ANU) - Triply Periodic Minimal Surfaces",
+          {
+            name: "Randall Kamien (UPENN) - Materials Geometry",
+            modal: true,
+          },
+          {
+            name: "Stephen Hyde (Sydney & ANU) - Triply Periodic Minimal Surfaces",
+            modal: true,
+          },
         ],
       },
       {
         title: "Discussion Leader",
-        list: ["Gerd Schröder‐Turk (Murdoch) - Gyroids Everywhere"],
+        list: [
+          {
+            name: "Gerd Schröder‐Turk (Murdoch) - Gyroids Everywhere",
+            "modal": false,
+          },
+        ],
       },
       {
         title: "Plenary lectures",
         list: [
-          "Myfanwy Evans (Potsdam) - Topology & Geometry",
-          "Gregory Grason (UMASS) - Gyroid Physics",
-          "Ulrich Wiesner (Cornell) - Gyroid Materials",
-          "Matthias Saba (Fribourg) - Gyroid Photonics",
+          {
+            name:"Myfanwy Evans (Potsdam) - Topology & Geometry",
+            modal: false,
+          },
+          {
+            name:"Gregory Grason (UMASS) - Gyroid Physics",
+            modal: false,
+          },
+          {
+            name: "Ulrich Wiesner (Cornell) - Gyroid Materials",
+            modal: false,
+          },
+          {
+            name: "Matthias Saba (Fribourg) - Gyroid Photonics",
+            modal: false,
+          },
         ],
       },
       {
         title: "Invited speakers",
         list: [
-          "Koya Shimokawa (Ochanomizu) - Topology",
-          "Jacob Kirkensgaard (Copenhagen) - Hyperbolic Geometry",
-          "Xiangbing Zeng (Sheffield) - Liquid Crystals",
-          "Takahiro Ichikawa (TUAT) - Proton Conduction",
-          "Rong-Ming Ho (Tsinghua) - NanoGyroid",
-          "An-Chang Shi (McMaster) - Polymer Theory",
-          "Kunio Awaga (Nagoya) - Gyroid Molecules",
-          "Philipp Schönhöfer (Michigan) - Gyroid Simulation",
-          "Justin Llandro (Sumitomo Chemical) - Gyroid Magnetics",
-          "Łucja Kowalewska (Warsaw) - Cell Membranes",
-          "Vinodkumar Saranathan (Krea) - Gyroid Evolution",
+          {
+            name: "Koya Shimokawa (Ochanomizu) - Topology",
+            modal: false,
+          },
+          {
+            name: "Jacob Kirkensgaard (Copenhagen) - Hyperbolic Geometry",
+            modal: false,
+          },
+          {
+            name: "Xiangbing Zeng (Sheffield) - Liquid Crystals",
+            modal: false,
+          },
+          {
+            name: "Takahiro Ichikawa (TUAT) - Proton Conduction",
+            modal: false,
+          },
+          {
+            name: "Rong-Ming Ho (Tsinghua) - NanoGyroid",
+            modal: false,
+          },
+          {
+            name: "An-Chang Shi (McMaster) - Polymer Theory",
+            modal: false,
+          },
+          {
+            name: "Kunio Awaga (Nagoya) - Gyroid Molecules",
+            modal: false,
+          },
+          {
+            name: "Philipp Schönhöfer (Michigan) - Gyroid Simulation",
+            modal: false,
+          },
+          {
+            name: "Justin Llandro (Sumitomo Chemical) - Gyroid Magnetics",
+            modal: false,
+          },
+          {
+            name: "Łucja Kowalewska (Warsaw) - Cell Membranes",
+            modal: false,
+          },
+          {
+            name: "Vinodkumar Saranathan (Krea) - Gyroid Evolution",
+            modal: false,
+          },
         ],
       },
     ],

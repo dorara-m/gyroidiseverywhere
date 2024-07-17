@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Section from "../../components/Section.astro";
 import TextList from "../../components/TextList.astro";
 import ToggleLang from "../parts/ToggleLang.astro";
+import Modal from "../../components/parts/Modal.astro";
 import TimeTable from "../parts/TimeTable.astro";
 import Table from "../parts/Table.astro";
 
@@ -12,7 +13,10 @@ interface Props {
     h2_1: string;
     sections: {
       title: string;
-      list: string[];
+      list: {
+        name: string;
+        modal: boolean;
+      }[];
     }[];
     h2_2: string;
     h2_3: string;
@@ -36,7 +40,7 @@ const { data, lang } = Astro.props as Props;
     {
       data.sections.map((section) => (
         <Section title={section.title} h3 lang={lang}>
-          <TextList list={section.list} />
+          <TextList list={section.list.map(item => ({ name: item.name, modal: item.modal }))} />
         </Section>
       ))
     }
