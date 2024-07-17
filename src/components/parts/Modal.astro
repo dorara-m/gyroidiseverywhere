@@ -1,0 +1,38 @@
+---
+interface Props {
+  data: {
+    imgSrc: string;
+    name: string;
+    detail: string;
+  }[];
+}
+
+const { data } = Astro.props;
+---
+{data.map((item) => {
+  return (
+    <div class="modal">
+      <div class="modalContent">
+        <div class="modalContent__img">
+          <img src={item.imgSrc} alt={item.name} />
+        </div>
+        <div class="modalContent__text">
+          <div class="modalContent__name">{item.name}</div>
+          <div class="modalContent__detail">{item.detail}</div>
+        </div>
+      </div>
+      <div class="modal__CloseBtn"></div>
+    </div>
+  );
+})}
+
+<style lang="scss">
+  @import "../../styles/mq.scss";
+  .modal {
+    display: none;
+
+    &.-active {
+      display: block;
+    }
+  }
+</style>
