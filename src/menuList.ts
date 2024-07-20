@@ -18,8 +18,9 @@ export const menuList = [
     forHeader: "Registration & <br/>Accommodation",
   },
   {
-    name: "Venue",
+    name: "Venue & Excursion",
     path: "venue/",
+	forHeader: "Venue & <br/>Excursion",
   },
   {
     name: "Photos",
