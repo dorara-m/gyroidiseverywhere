@@ -14,7 +14,11 @@ interface Props {
       title: string;
       list: {
         name: string;
-        modal: boolean;
+        modal?: {
+          title: string;
+          imgSrc: string;
+          detail: string;
+        };
       }[];
     }[];
     h2_2: string;
@@ -32,7 +36,8 @@ interface Props {
 }
 
 const { data, lang } = Astro.props as Props;
-
+// ↓これが動かない。jsで書き換えたいが。。ここにアクセスできない
+let currentIndex = 0;
 ---
 
 <Layout pageTitle={data.pageTitle} lang={lang}>
@@ -42,14 +47,10 @@ const { data, lang } = Astro.props as Props;
         <Section title={section.title} h3 lang={lang}>
           <ul class="list">
             {section.list.map((item) => {
-              return (
-                <li class={item.modal ? "hasModal" : ""}>{item.name}</li>
-              );
+              return <li class={item.modal ? "hasModal" : ""}>{item.name}</li>;
             })}
           </ul>
         </Section>
-
-        <Modal data={[{ imgSrc: "", name: "", detail: "" }]} />
       ))
     }
   </Section>
@@ -60,7 +61,7 @@ const { data, lang } = Astro.props as Props;
     <Table thead={data.ateendee.thead} tbody={data.ateendee.tbody} />
   </Section>
   <ToggleLang lang={lang} />
-  <Modal data={[{ imgSrc: "", name: "", detail: "" }]} />
+  <Modal data={data.sections[0].list[currentIndex].modal} />
 </Layout>
 
 <style lang="scss">
@@ -70,7 +71,11 @@ const { data, lang } = Astro.props as Props;
   .hasModal {
     position: relative;
     width: fit-content;
-    
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+
     &::after {
       content: "";
       display: block;
@@ -87,20 +92,18 @@ const { data, lang } = Astro.props as Props;
 </style>
 
 <script>
-  const modalOpenElements = document.querySelectorAll("hasModal");
-  const modal = document.querySelector("modal");
-  const modalImg = document.getElementById("modalImg") as HTMLImageElement;
-  const modalName = document.getElementById("modalName") as HTMLDivElement;
-  const modalDetail = document.getElementById("modalDetail") as HTMLDivElement;
+  const modalOpenElements = document.querySelectorAll(".hasModal");
+  const modal = document.querySelector(".modal");
 
   modalOpenElements.forEach((element) => {
     element.addEventListener("click", (event: any) => {
       const target = event.currentTarget;
-      if (modal != null && modalImg != null && modalName != null && modalDetail != null) {
+      // ここでindexを取得して、対応するデータをモーダルに渡したい。
+      // currentIndex = Array.from(target.parentNode.children).indexOf(target);
+
+      if (modal !== null) {
+        console.log("if passed");
         modal.classList.add("-active");
-        modalImg.src = target.dataset.imgSrc;
-        modalName.textContent = target.dataset.name;
-        modalDetail.textContent = target.dataset.detail;
       }
     });
   });
