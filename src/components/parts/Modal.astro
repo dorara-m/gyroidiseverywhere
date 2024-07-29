@@ -12,7 +12,6 @@ const { data } = Astro.props;
 {data.map((item) => {
   return (
     <div class="modal">
-      <button class="modal__CloseBtn"></button>
       <div class="modalContent">
         <div class="modalContent__img">
           <img src={item.imgSrc} alt={item.name} />
@@ -21,7 +20,104 @@ const { data } = Astro.props;
           <div class="modalContent__name">{item.name}</div>
           <div class="modalContent__detail">{item.detail}</div>
         </div>
+        <button class="modalContent__closeBtn"></button>
       </div>
     </div>
   );
 })}
+
+<style lang="scss">
+  @import "../../styles/mq.scss";
+  
+  .modal {
+    // todo:あとでコメントアウト解除
+    width: 100%;
+    height: 100%;
+    // opacity: 0;
+    // visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.2);
+    z-index: 10;
+    overflow: auto;
+
+    &.-active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modalContent {
+      width: 70vw;
+      height: 70vh;
+      max-width: 800px;
+      display: flex;
+      background-color: white;
+      border-radius: 8%;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .modalContent__closeBtn {
+      background-color: var(--color-sub);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      top: 25px;
+      right: 25px;
+      position: fixed;
+
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 1px;
+        position: absolute;
+        border-top: 2px solid white;
+        border-radius: 2.5px;
+      }
+
+      &::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+
+    .modalContent__img {
+      width: 30%;
+      height: 100%;
+
+      > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .modalContent__text {
+      flex: 1;
+
+      .modalContent__name {
+        font-size: 1.5rem;
+        font-weight: bold;
+        font-color: var(--color--sub);
+      }
+
+      .modalContent__detail {
+        margin-top: 10px;
+      }
+    }
+  }
+</style>
+
+<script>
+  // モーダルを閉じる
+</script>

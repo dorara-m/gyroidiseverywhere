@@ -4,6 +4,7 @@ import Section from "../../components/Section.astro";
 import ToggleLang from "../parts/ToggleLang.astro";
 import TimeTable from "../parts/TimeTable.astro";
 import Table from "../parts/Table.astro";
+import Modal from "../parts/Modal.astro";
 
 interface Props {
   data: {
@@ -31,6 +32,7 @@ interface Props {
 }
 
 const { data, lang } = Astro.props as Props;
+
 ---
 
 <Layout pageTitle={data.pageTitle} lang={lang}>
@@ -46,6 +48,8 @@ const { data, lang } = Astro.props as Props;
             })}
           </ul>
         </Section>
+
+        <Modal data={[{ imgSrc: "", name: "", detail: "" }]} />
       ))
     }
   </Section>
@@ -56,6 +60,7 @@ const { data, lang } = Astro.props as Props;
     <Table thead={data.ateendee.thead} tbody={data.ateendee.tbody} />
   </Section>
   <ToggleLang lang={lang} />
+  <Modal data={[{ imgSrc: "", name: "", detail: "" }]} />
 </Layout>
 
 <style lang="scss">
@@ -79,23 +84,24 @@ const { data, lang } = Astro.props as Props;
       background-size: contain;
     }
   }
-
-  .modal {
-    // todo:あとでコメントアウト解除
-    width: 100%;
-    height: 100%;
-    // opacity: 0;
-    // visibility: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(0,0,0,.5);
-    z-index: 10;
-    overflow: auto;
-
-    .-active {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
 </style>
+
+<script>
+  const modalOpenElements = document.querySelectorAll("hasModal");
+  const modal = document.querySelector("modal");
+  const modalImg = document.getElementById("modalImg") as HTMLImageElement;
+  const modalName = document.getElementById("modalName") as HTMLDivElement;
+  const modalDetail = document.getElementById("modalDetail") as HTMLDivElement;
+
+  modalOpenElements.forEach((element) => {
+    element.addEventListener("click", (event: any) => {
+      const target = event.currentTarget;
+      if (modal != null && modalImg != null && modalName != null && modalDetail != null) {
+        modal.classList.add("-active");
+        modalImg.src = target.dataset.imgSrc;
+        modalName.textContent = target.dataset.name;
+        modalDetail.textContent = target.dataset.detail;
+      }
+    });
+  });
+</script>
