@@ -57,3 +57,45 @@ const { data, lang } = Astro.props as Props;
   </Section>
   <ToggleLang lang={lang} />
 </Layout>
+
+<style lang="scss">
+  @import "../../styles/mq.scss";
+
+  // hasModalクラスを持つ要素はモーダルアイコンを表示
+  .hasModal {
+    position: relative;
+    width: fit-content;
+    
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: -15px;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 12px;
+      background: url("../../images/program/icon-information.png") no-repeat;
+      background-size: contain;
+    }
+  }
+
+  .modal {
+    // todo:あとでコメントアウト解除
+    width: 100%;
+    height: 100%;
+    // opacity: 0;
+    // visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 10;
+    overflow: auto;
+
+    .-active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+</style>

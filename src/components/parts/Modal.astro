@@ -12,6 +12,7 @@ const { data } = Astro.props;
 {data.map((item) => {
   return (
     <div class="modal">
+      <button class="modal__CloseBtn"></button>
       <div class="modalContent">
         <div class="modalContent__img">
           <img src={item.imgSrc} alt={item.name} />
@@ -21,18 +22,6 @@ const { data } = Astro.props;
           <div class="modalContent__detail">{item.detail}</div>
         </div>
       </div>
-      <div class="modal__CloseBtn"></div>
     </div>
   );
 })}
-
-<style lang="scss">
-  @import "../../styles/mq.scss";
-  .modal {
-    display: none;
-
-    &.-active {
-      display: block;
-    }
-  }
-</style>
