@@ -16,7 +16,7 @@ interface Props {
     }[];
     h2_2: string;
     h2_3: string;
-    ateendee: {
+    attendee: {
       thead: string[];
       tbody: {
         item1: string;
@@ -45,7 +45,7 @@ const { data, lang } = Astro.props as Props;
     <TimeTable />
   </Section>
   <Section title={data.h2_3}>
-    <Table thead={data.ateendee.thead} tbody={data.ateendee.tbody} wide />
+    <Table thead={data.attendee.thead} tbody={data.attendee.tbody} wide />
   </Section>
   <ToggleLang lang={lang} />
 </Layout>
