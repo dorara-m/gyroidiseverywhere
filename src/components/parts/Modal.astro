@@ -121,4 +121,17 @@ const { data } = Astro.props;
 
 <script>
   // モーダルを閉じる
+  document.addEventListener("click", (e) => {
+    const closeBtn = document.querySelector(".modalContent__closeBtn");
+    const targetElement = e.target as Element;
+    const activeModal = document.querySelector(".modal.-active");
+    
+    if (closeBtn && closeBtn.contains(targetElement)) {
+      activeModal?.classList.remove("-active");
+    }
+
+    if (activeModal && !activeModal.querySelector(".modalContent")?.contains(targetElement)) {
+      activeModal.classList.remove("-active");
+    }
+  });
 </script>

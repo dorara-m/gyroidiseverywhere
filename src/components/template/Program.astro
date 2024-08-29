@@ -97,6 +97,7 @@ let currentIndex = 0;
 
   modalOpenElements.forEach((element) => {
     element.addEventListener("click", (event: any) => {
+      event.stopPropagation();
       const target = event.currentTarget;
       // ここでindexを取得して、対応するデータをモーダルに渡したい。
       // currentIndex = Array.from(target.parentNode.children).indexOf(target);
