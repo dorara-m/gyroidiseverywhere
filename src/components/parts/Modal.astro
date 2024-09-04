@@ -1,32 +1,16 @@
----
-interface Props {
-  data?: {
-    imgSrc: string;
-    title: string;
-    detail: string;
-  };
-}
-
-const { data } = Astro.props;
----
-
-{
-  data && (
-    <div class="modal">
-      <div class="modalContent">
-        <div class="modalContent__img">
-          <img src={data.imgSrc} alt={data.title} />
-        </div>
-        <div class="modalContent__text">
-          <div class="modalContent__name">{data.title}</div>
-          <div class="modalContent__detail">{data.detail}</div>
-        </div>
-        <button class="modalContent__closeBtn -pc" />
-      </div>
-      <button class="modalContent__closeBtn -sp" />
+<div id="modal" class="modal" style="display:none;">
+  <div class="modalContent">
+    <div class="modalContent__img">
+      <img id="modal-img" src="" alt="" />
     </div>
-  )
-}
+    <div class="modalContent__text">
+      <div class="modalContent__name" id="modal-title"></div>
+      <div class="modalContent__detail" id="modal-detail"></div>
+    </div>
+    <button class="modalContent__closeBtn -pc"></button>
+  </div>
+  <button class="modalContent__closeBtn -sp"></button>
+</div>
 
 <style lang="scss">
   @import "../../styles/mq.scss";
@@ -158,15 +142,43 @@ const { data } = Astro.props;
 </style>
 
 <script>
-  // モーダルを閉じる
+  document.addEventListener("DOMContentLoaded", function(){
+    const modal = document.getElementById("modal");
+    function openModal(modalData: Props["data"]) {
+      (document.getElementById("modal-img") as HTMLImageElement).src = modalData.imgSrc;
+      (document.getElementById("modal-img") as HTMLImageElement).alt = modalData.title;
+      (document.getElementById("modal-title") as HTMLElement).textContent = modalData.title;
+      (document.getElementById("modal-detail") as HTMLElement).textContent = modalData.detail;
+
+      if (modal) {
+        modal.style.display = "block";
+      }
+    }
+
+    function closeModal() {
+      if (modal){
+        modal.style.display = "none";
+      }
+    }
+
+    document.querySelectorAll(".hasModal").forEach(item => {
+      item.addEventListener("click", function(this: HTMLElement) {
+        const modalData = JSON.parse(this.dataset.modal ?? "");
+        openModal(modalData);
+      });
+    });
+
+    document.querySelectorAll(".modalContent__closeBtn").forEach(item => {
+      item.addEventListener("click", function() {
+        closeModal();
+      });
+    });
+  });
+
+  // モーダル外をクリックした場合にモーダルを閉じる
   document.addEventListener("click", (e) => {
-    const closeBtn = document.querySelector(".modalContent__closeBtn");
     const targetElement = e.target as Element;
     const activeModal = document.querySelector(".modal.-active");
-    
-    if (closeBtn && closeBtn.contains(targetElement)) {
-      activeModal?.classList.remove("-active");
-    }
 
     if (activeModal && !activeModal.querySelector(".modalContent")?.contains(targetElement)) {
       activeModal.classList.remove("-active");

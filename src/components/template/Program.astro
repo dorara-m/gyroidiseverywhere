@@ -46,8 +46,15 @@ let currentIndex = 0;
       data.sections.map((section) => (
         <Section title={section.title} h3 lang={lang}>
           <ul class="list">
-            {section.list.map((item) => {
-              return <li class={item.modal ? "hasModal" : ""}>{item.name}</li>;
+            {section.list.map((item, index) => {
+              return (
+                <li 
+                  class={item.modal ? "hasModal" : ""}
+                  data-modal={JSON.stringify(item.modal)}
+                  data-index={index}
+                >
+                  {item.name}
+                </li>);
             })}
           </ul>
         </Section>
