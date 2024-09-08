@@ -1,5 +1,7 @@
 ---
 import Program from "../../components/template/Program.astro";
+import imageModal1 from "../../images/program/randall-kamien.jpg";
+import imageModal2 from "../../images/program/stephen-t-hyde.jpg";
 ---
 
 <Program
@@ -11,37 +13,87 @@ import Program from "../../components/template/Program.astro";
       {
         title: "Tutorial lectures (Open lectures w/o registration)",
         list: [
-          "Randall Kamien (UPENN) - Materials Geometry",
-          "Stephen Hyde (Sydney & ANU) - Triply Periodic Minimal Surfaces",
+          {
+            name: "Randall Kamien (UPENN) - Materials Geometry",
+            modal: {
+              title: "Randall Kamien",
+              imgSrc: imageModal1,
+              detail:
+                "Professor Randall Kamien is the Vicki and William Abrams Professor in the Natural Sciences and a professor of physics and astronomy in the Department of Physics and Astronomy at the University of Pennsylvania. He also holds a secondary appointment in mathematics. Kamien is a leading figure in the theory of topological effects in soft condensed matter physics, renowned for the mathematical rigor he brings to his work. Particularly, he is recognized for his use of sophisticated and elegant geometrical methods to gain insight into fundamental aspects of the structure of polymers, colloids, liquid crystals, and related materials, as well as into the topological defects occurring in these materials. His strong reputation and broad knowledge across many areas of physics are further evidenced by his roles as Lead Editor of the Journal of Modern Physics since 2017 and APS Editor in Chief (including the Physical Review series) since the beginning of 2023. Kamien has been a Simons Investigator and has received numerous awards, including the G.W. Gray Medal and the Samsung Mid-Career Award. Additionally, he has received fellowships from the American Association for the Advancement of Science, the American Physical Society, and the Alfred P. Sloan Foundation. He earned his Ph.D. from Harvard University in 1992. Prof. Kamien is also well-known for delivering high-quality and enthusiastic lectures.",
+            },
+          },
+          {
+            name: "Stephen Hyde (Sydney & ANU) - Triply Periodic Minimal Surfaces",
+            modal: {
+              title: "Stephen T. Hyde",
+              imgSrc: imageModal2,
+              detail:
+                "Professor Stephen Timothy Hyde is an Australian scientist who was appointed a Fellow of the Australian Academy of Science in 2005. He is a professor and also the ARC Federation Fellow in the Department of Applied Mathematics, Research School of Physics, at the Australian National University. In 2021, he took up a position at the University of Sydney. His specialty is in the field of theoretical physics, focusing on the self-assembly of complex materials and systems. He is interested in the structuring of complex physical, geological, and biological systems and the relevance of low-dimensional geometry and topology. Physical structures include the self-assembly of molecular and macromolecular amphiphiles and lipids in solution into liquid crystals, as well as the formation of inorganic materials in biological and abiotic conditions. Novel hyperbolic interfaces and bicontinuous spatial partitions, including the gyroid, are of particular interest to him. He also works on the characterization and enumeration of geometric networks in various spaces, including two-dimensional hyperbolic networks and higher-dimensional Euclidean networks, using techniques from graph theory and topology. He is one of the authors of 'The Language of Shapes, The Role of Curvature in Condensed Matter: Physics, Chemistry and Biology,' which is the most famous books in the field.",
+            },
+          },
         ],
       },
       {
         title: "Discussion Leader",
-        list: ["Gerd Schröder‐Turk (Murdoch) - Gyroids Everywhere"],
+        list: [
+          {
+            name: "Gerd Schröder‐Turk (Murdoch) - Gyroids Everywhere",
+          },
+        ],
       },
       {
         title: "Plenary lectures",
         list: [
-          "Myfanwy Evans (Potsdam) - Topology & Geometry",
-          "Gregory Grason (UMASS) - Gyroid Physics",
-          "Ulrich Wiesner (Cornell) - Gyroid Materials",
-          "Matthias Saba (Fribourg) - Gyroid Photonics",
+          {
+            name: "Myfanwy Evans (Potsdam) - Topology & Geometry",
+          },
+          {
+            name: "Gregory Grason (UMASS) - Gyroid Physics",
+          },
+          {
+            name: "Ulrich Wiesner (Cornell) - Gyroid Materials",
+          },
+          {
+            name: "Matthias Saba (Fribourg) - Gyroid Photonics",
+          },
         ],
       },
       {
         title: "Invited speakers",
         list: [
-          "Koya Shimokawa (Ochanomizu) - Topology",
-          "Jacob Kirkensgaard (Copenhagen) - Hyperbolic Geometry",
-          "Xiangbing Zeng (Sheffield) - Liquid Crystals",
-          "Takahiro Ichikawa (TUAT) - Proton Conduction",
-          "Rong-Ming Ho (Tsinghua) - NanoGyroid",
-          "An-Chang Shi (McMaster) - Polymer Theory",
-          "Kunio Awaga (Nagoya) - Gyroid Molecules",
-          "Philipp Schönhöfer (Michigan) - Gyroid Simulation",
-          "Justin Llandro (Sumitomo Chemical) - Gyroid Magnetics",
-          "Łucja Kowalewska (Warsaw) - Cell Membranes",
-          "Vinodkumar Saranathan (Krea) - Gyroid Evolution",
+          {
+            name: "Koya Shimokawa (Ochanomizu) - Topology",
+          },
+          {
+            name: "Jacob Kirkensgaard (Copenhagen) - Hyperbolic Geometry",
+          },
+          {
+            name: "Xiangbing Zeng (Sheffield) - Liquid Crystals",
+          },
+          {
+            name: "Takahiro Ichikawa (TUAT) - Proton Conduction",
+          },
+          {
+            name: "Rong-Ming Ho (Tsinghua) - NanoGyroid",
+          },
+          {
+            name: "An-Chang Shi (McMaster) - Polymer Theory",
+          },
+          {
+            name: "Kunio Awaga (Nagoya) - Gyroid Molecules",
+          },
+          {
+            name: "Philipp Schönhöfer (Michigan) - Gyroid Simulation",
+          },
+          {
+            name: "Justin Llandro (Sumitomo Chemical) - Gyroid Magnetics",
+          },
+          {
+            name: "Łucja Kowalewska (Warsaw) - Cell Membranes",
+          },
+          {
+            name: "Vinodkumar Saranathan (Krea) - Gyroid Evolution",
+          },
         ],
       },
     ],

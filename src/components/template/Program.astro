@@ -1,10 +1,11 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Section from "../../components/Section.astro";
-import TextList from "../../components/TextList.astro";
 import ToggleLang from "../parts/ToggleLang.astro";
 import TimeTable from "../parts/TimeTable.astro";
 import Table from "../parts/Table.astro";
+import Modal from "../parts/Modal.astro";
+import type { ImageMetadata } from "astro";
 
 interface Props {
   data: {
@@ -12,7 +13,14 @@ interface Props {
     h2_1: string;
     sections: {
       title: string;
-      list: string[];
+      list: {
+        name: string;
+        modal?: {
+          title: string;
+          imgSrc: ImageMetadata;
+          detail: string;
+        };
+      }[];
     }[];
     h2_2: string;
     h2_3: string;
@@ -29,6 +37,8 @@ interface Props {
 }
 
 const { data, lang } = Astro.props as Props;
+// ↓これが動かない。jsで書き換えたいが。。ここにアクセスできない
+let currentIndex = 0;
 ---
 
 <Layout pageTitle={data.pageTitle} lang={lang}>
@@ -36,7 +46,19 @@ const { data, lang } = Astro.props as Props;
     {
       data.sections.map((section) => (
         <Section title={section.title} h3 lang={lang}>
-          <TextList list={section.list} />
+          <ul class="list">
+            {section.list.map((item, index) => {
+              return (
+                <li
+                  class={item.modal ? "hasModal" : ""}
+                  data-modal={JSON.stringify(item.modal)}
+                  data-index={index}
+                >
+                  {item.name}
+                </li>
+              );
+            })}
+          </ul>
         </Section>
       ))
     }
@@ -48,4 +70,51 @@ const { data, lang } = Astro.props as Props;
     <Table thead={data.attendee.thead} tbody={data.attendee.tbody} wide />
   </Section>
   <ToggleLang lang={lang} />
+  <Modal data={data.sections[0].list[currentIndex].modal} />
 </Layout>
+
+<style lang="scss">
+  @import "../../styles/mq.scss";
+
+  // hasModalクラスを持つ要素はモーダルアイコンを表示
+  .hasModal {
+    position: relative;
+    width: fit-content;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: -15px;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 12px;
+      background: url("../../images/program/icon-information.png") no-repeat;
+      background-size: contain;
+    }
+  }
+</style>
+
+<script>
+  const modalOpenElements = document.querySelectorAll(".hasModal");
+  const modal = document.querySelector(".modal");
+
+  modalOpenElements.forEach((element) => {
+    element.addEventListener("click", (event: any) => {
+      event.stopPropagation();
+      const target = event.currentTarget;
+      // ここでindexを取得して、対応するデータをモーダルに渡したい。
+      // currentIndex = Array.from(target.parentNode.children).indexOf(target);
+
+      if (modal !== null) {
+        console.log("if passed");
+        modal.classList.add("-active");
+      }
+    });
+  });
+</script>
