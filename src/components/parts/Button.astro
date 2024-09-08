@@ -1,6 +1,6 @@
 ---
 interface Props {
-	text: string;
+  text: string;
   href: string;
 }
 
@@ -12,15 +12,15 @@ const { text, href } = Astro.props;
 </div>
 
 <style lang="scss">
-	@import "../styles/mq.scss";
+  @import "../../styles/mq.scss";
 
   .hoverBg {
-    height: 60px;
+    height: 50px;
     display: flex;
     align-items: center;
   }
 
-	a {
+  a {
     text-decoration: none;
     padding: 0 30px;
     height: 100%;
@@ -33,8 +33,10 @@ const { text, href } = Astro.props;
     background-color: #ffe5e5;
     font-family: var(--font-en2);
     font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 0.03em;
     &:hover {
       border-bottom-width: 0;
     }
-	}
+  }
 </style>

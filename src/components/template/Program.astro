@@ -5,6 +5,7 @@ import ToggleLang from "../parts/ToggleLang.astro";
 import TimeTable from "../parts/TimeTable.astro";
 import Table from "../parts/Table.astro";
 import Modal from "../parts/Modal.astro";
+import Button from "../parts/Button.astro";
 import type { ImageMetadata } from "astro";
 
 interface Props {
@@ -64,6 +65,10 @@ let currentIndex = 0;
     }
   </Section>
   <Section title={data.h2_2}>
+    <div class="programBtnWrap">
+      <Button href="/program.pdf" text="Program" />
+      <Button href="/poster.pdf" text="Poster" />
+    </div>
     <TimeTable />
   </Section>
   <Section title={data.h2_3}>
@@ -97,6 +102,12 @@ let currentIndex = 0;
       background: url("../../images/program/icon-information.png") no-repeat;
       background-size: contain;
     }
+  }
+
+  .programBtnWrap {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
   }
 </style>
 
