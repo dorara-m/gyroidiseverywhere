@@ -5,6 +5,7 @@ import ToggleLang from "../parts/ToggleLang.astro";
 import TimeTable from "../parts/TimeTable.astro";
 import Table from "../parts/Table.astro";
 import Modal from "../parts/Modal.astro";
+import type { ImageMetadata } from "astro";
 
 interface Props {
   data: {
@@ -16,7 +17,7 @@ interface Props {
         name: string;
         modal?: {
           title: string;
-          imgSrc: string;
+          imgSrc: ImageMetadata;
           detail: string;
         };
       }[];
@@ -48,13 +49,14 @@ let currentIndex = 0;
           <ul class="list">
             {section.list.map((item, index) => {
               return (
-                <li 
+                <li
                   class={item.modal ? "hasModal" : ""}
                   data-modal={JSON.stringify(item.modal)}
                   data-index={index}
                 >
                   {item.name}
-                </li>);
+                </li>
+              );
             })}
           </ul>
         </Section>

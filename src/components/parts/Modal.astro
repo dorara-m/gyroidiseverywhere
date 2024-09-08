@@ -151,13 +151,27 @@
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function(){
+  import type { ImageMetadata } from "astro";
+
+  interface Props {
+    data: {
+      title: string;
+      imgSrc: ImageMetadata;
+      detail: string;
+    };
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("modal");
     function openModal(modalData: Props["data"]) {
-      (document.getElementById("modal-img") as HTMLImageElement).src = modalData.imgSrc;
-      (document.getElementById("modal-img") as HTMLImageElement).alt = modalData.title;
-      (document.getElementById("modal-title") as HTMLElement).textContent = modalData.title;
-      (document.getElementById("modal-detail") as HTMLElement).textContent = modalData.detail;
+      (document.getElementById("modal-img") as HTMLImageElement).src =
+        modalData.imgSrc.src;
+      (document.getElementById("modal-img") as HTMLImageElement).alt =
+        modalData.title;
+      (document.getElementById("modal-title") as HTMLElement).textContent =
+        modalData.title;
+      (document.getElementById("modal-detail") as HTMLElement).textContent =
+        modalData.detail;
 
       if (modal) {
         modal.style.display = "block";
@@ -165,20 +179,20 @@
     }
 
     function closeModal() {
-      if (modal){
+      if (modal) {
         modal.style.display = "none";
       }
     }
 
-    document.querySelectorAll(".hasModal").forEach(item => {
-      item.addEventListener("click", function(this: HTMLElement) {
+    document.querySelectorAll(".hasModal").forEach((item) => {
+      item.addEventListener("click", function (this: HTMLElement) {
         const modalData = JSON.parse(this.dataset.modal ?? "");
         openModal(modalData);
       });
     });
 
-    document.querySelectorAll(".modalContent__closeBtn").forEach(item => {
-      item.addEventListener("click", function() {
+    document.querySelectorAll(".modalContent__closeBtn").forEach((item) => {
+      item.addEventListener("click", function () {
         closeModal();
       });
     });
@@ -189,7 +203,10 @@
     const targetElement = e.target as Element;
     const activeModal = document.querySelector(".modal.-active");
 
-    if (activeModal && !activeModal.querySelector(".modalContent")?.contains(targetElement)) {
+    if (
+      activeModal &&
+      !activeModal.querySelector(".modalContent")?.contains(targetElement)
+    ) {
       activeModal.classList.remove("-active");
     }
   });
