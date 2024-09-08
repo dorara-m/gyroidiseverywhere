@@ -24,7 +24,7 @@ interface Props {
     }[];
     h2_2: string;
     h2_3: string;
-    ateendee: {
+    attendee: {
       thead: string[];
       tbody: {
         item1: string;
@@ -67,7 +67,7 @@ let currentIndex = 0;
     <TimeTable />
   </Section>
   <Section title={data.h2_3}>
-    <Table thead={data.ateendee.thead} tbody={data.ateendee.tbody} />
+    <Table thead={data.attendee.thead} tbody={data.attendee.tbody} wide />
   </Section>
   <ToggleLang lang={lang} />
   <Modal data={data.sections[0].list[currentIndex].modal} />
