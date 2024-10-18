@@ -83,24 +83,21 @@ let currentIndex = 0;
 
   // hasModalクラスを持つ要素はモーダルアイコンを表示
   .hasModal {
-    position: relative;
-    width: fit-content;
     cursor: pointer;
+    transition: opacity 0.3s;
     &:hover {
-      text-decoration: underline;
+      opacity: 0.6;
     }
 
     &::after {
+      margin-left: 5px;
       content: "";
-      display: block;
-      position: absolute;
-      top: 50%;
-      right: -15px;
-      transform: translateY(-50%);
-      width: 12px;
-      height: 12px;
+      display: inline-block;
+      transform: translateY(3px);
+      width: 15px;
+      height: 15px;
       background: url("../../images/program/icon-information.png") no-repeat;
-      background-size: contain;
+      background-size: cover;
     }
   }
 
@@ -118,12 +115,8 @@ let currentIndex = 0;
   modalOpenElements.forEach((element) => {
     element.addEventListener("click", (event: any) => {
       event.stopPropagation();
-      const target = event.currentTarget;
-      // ここでindexを取得して、対応するデータをモーダルに渡したい。
-      // currentIndex = Array.from(target.parentNode.children).indexOf(target);
-
       if (modal !== null) {
-        console.log("if passed");
+        // console.log("if passed");
         modal.classList.add("-active");
       }
     });
