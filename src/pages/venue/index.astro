@@ -6,6 +6,7 @@ import imageHall from "../../images/venue/hall.jpg";
 import image02 from "../../images/venue/img02.jpg";
 import image03 from "../../images/venue/img03.jpg";
 import imageMap from "../../images/venue/map01.jpg";
+import imageBus from "../../images/venue/Shuttlebus.jpg";
 import imageReport from "../../images/venue/report01.jpg";
 import imageSumiyoshi from "../../images/venue/sumiyashiTaisha.jpg";
 import imageNoh from "../../images/venue/yamamotoNohTheater.jpg";
@@ -38,6 +39,10 @@ const links = [
   {
     name: "Local spot: 司馬遼太郎記念館, Shiba Ryotaro Memorial Museum",
     link: "https://www.shibazaidan.or.jp",
+  },
+  {
+    name: "Tennoji",
+    link: "https://www.japan.travel/en/destinations/kansai/osaka/tennoji/",
   },
   {
     name: "Osaka",
@@ -136,7 +141,17 @@ const links = [
           />
         </div>
       </section>
-    </div>
+      <section>
+        <h2>Shuttle Bus</h2>
+        <div class="cardWrapper">
+          <SimpleCard
+            image={{ src: imageBus.src, alt: "Shuttle Busのイメージ画像" }}
+            overflow
+          />
+        </div>
+<iframe src="https://www.google.com/maps/d/embed?mid=1OY0STwglaz4d3xRgcHPoTePQIwfUKTI&ehbc=2E312F" width="640" height="480"></iframe>
+      </section>
+   </div>
     <ul class="links">
       {
         links.map((link) => {
