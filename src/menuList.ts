@@ -15,7 +15,7 @@ export const menuList = [
   {
     name: "Registration & Accommodation",
     path: "registration/",
-    forHeader: "Registration & <br/>Accommodation",
+    forHeader: "Shuttle Bus<br/>Registration & <br/>Accommodation",
   },
   {
     name: "Venue & Excursion",
