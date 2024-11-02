@@ -156,7 +156,7 @@ import Footer from "../components/Footer.astro";
         }
       }
     }
-
+    // html:setで適用したいcssはここに書く
     .hidden {
       display: none;
     }
@@ -165,6 +165,17 @@ import Footer from "../components/Footer.astro";
       display: block;
       @media screen and (max-width: 768px) {
         display: none;
+      }
+    }
+    .table a {
+      background-color: var(--color-main);
+      color: #fff;
+      padding: 5px 7px;
+      border-radius: 5px;
+      @media screen and (min-width: 768px) {
+        &:hover {
+          opacity: 0.7;
+        }
       }
     }
   }

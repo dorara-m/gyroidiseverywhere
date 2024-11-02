@@ -8,50 +8,33 @@ import Table from "../../components/parts/Table.astro";
 
 <Layout pageTitle="Registration">
   <Section title="Shuttle bus service">
-<iframe src="https://www.google.com/maps/d/embed?mid=1OY0STwglaz4d3xRgcHPoTePQIwfUKTI&ehbc=2E312F" width="640" height="480"></iframe>
+    <iframe
+      src="https://www.google.com/maps/d/embed?mid=1OY0STwglaz4d3xRgcHPoTePQIwfUKTI&ehbc=2E312F"
+      width="640"
+      height="480"
+    >
+    </iframe>
   </Section>
 
   <Section title="Registration fees">
     <Table
       thead={["Item", "Amount", "Period"]}
       tbody={[
-        {
-          item1: "Regular (super early)",
-          item2: "25,000 JPY",
-          item3: "March 20 - May 31",
-        },
-        {
-          item1: "Regular (early)",
-          item2: "30,000 JPY",
-          item3: "June 1 - July 31",
-        },
-        {
-          item1: "Regular (late)",
-          item2: "35,000 JPY",
-          item3:
-            'August 1 - September 30 <br class="hiddenSp" />(participation only)',
-        },
-        {
-          item1: "Student (super early)",
-          item2: "8,000 JPY",
-          item3: "March 20 - May 31",
-        },
-        {
-          item1: "Student (early)",
-          item2: "10,000 JPY",
-          item3: "June 1 - July 31",
-        },
-        {
-          item1: "Student (late)",
-          item2: "12,000 JPY",
-          item3:
-            'August 1 - September 30 <br class="hiddenSp" />(participation only)',
-        },
-        {
-          item1: "Accompany person",
-          item2: "10,000 JPY",
-          item3: "-",
-        },
+        ["Regular (super early)", "25,000 JPY", "March 20 - May 31"],
+        ["Regular (early)", "30,000 JPY", "June 1 - July 31"],
+        [
+          "Regular (late)",
+          "35,000 JPY",
+          'August 1 - September 30 <br class="hiddenSp" />(participation only)',
+        ],
+        ["Student (super early)", "8,000 JPY", "March 20 - May 31"],
+        ["Student (early)", "10,000 JPY", "June 1 - July 31"],
+        [
+          "Student (late)",
+          "12,000 JPY",
+          'August 1 - September 30 <br class="hiddenSp" />(participation only)',
+        ],
+        ["Accompany person", "10,000 JPY", "-"],
       ]}
     />
     <div class="tableCaption">*All-inclusive</div>

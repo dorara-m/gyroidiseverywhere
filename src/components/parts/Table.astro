@@ -1,11 +1,7 @@
 ---
 interface Props {
   thead: string[];
-  tbody: {
-    item1: string;
-    item2: string;
-    item3: string;
-  }[];
+  tbody: string[][];
   wide?: boolean;
 }
 
@@ -13,7 +9,7 @@ const { thead, tbody, wide } = Astro.props;
 ---
 
 <div class="tableWrap">
-  <table class={`table ${wide ? "wide" : ''}`}>
+  <table class={`table ${wide ? "wide" : ""}`}>
     <thead>
       <tr>
         {
@@ -28,9 +24,9 @@ const { thead, tbody, wide } = Astro.props;
         tbody.map((item) => {
           return (
             <tr>
-              <td set:html={item.item1} />
-              <td set:html={item.item2} />
-              <td set:html={item.item3} />
+              {item.map((td) => {
+                return <td set:html={td} />;
+              })}
             </tr>
           );
         })

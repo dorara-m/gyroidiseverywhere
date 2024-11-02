@@ -1,0 +1,35 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Section from "../../../components/Section.astro";
+import TimeTable from "../../../components/parts/TimeTable.astro";
+---
+
+<Layout pageTitle="Program">
+  <Section title="password required">
+    <div id="js-hiddenArea">
+      <TimeTable />
+    </div>
+  </Section>
+</Layout>
+
+<style lang="scss">
+  #js-hiddenArea {
+    display: none;
+    &.is-show {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  const password = "AlanSchoen1924";
+  if (sessionStorage.getItem("isShow") !== "true") {
+    const input = prompt("Please enter the password.");
+    if (input === password) {
+      document.querySelector("#js-hiddenArea")?.classList.add("is-show");
+      sessionStorage.setItem("isShow", "true");
+    }
+  } else {
+    document.querySelector("#js-hiddenArea")?.classList.add("is-show");
+  }
+</script>

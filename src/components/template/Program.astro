@@ -2,7 +2,6 @@
 import Layout from "../../layouts/Layout.astro";
 import Section from "../../components/Section.astro";
 import ToggleLang from "../parts/ToggleLang.astro";
-import TimeTable from "../parts/TimeTable.astro";
 import Table from "../parts/Table.astro";
 import Modal from "../parts/Modal.astro";
 import Button from "../parts/Button.astro";
@@ -27,11 +26,7 @@ interface Props {
     h2_3: string;
     attendee: {
       thead: string[];
-      tbody: {
-        item1: string;
-        item2: string;
-        item3: string;
-      }[];
+      tbody: string[][];
     };
   };
   lang: string;
@@ -43,6 +38,15 @@ let currentIndex = 0;
 ---
 
 <Layout pageTitle={data.pageTitle} lang={lang}>
+  <Section title={data.h2_2}>
+    <div class="programBtnWrap">
+      <Button
+        href="/gyroidiseverywhere/program/timetable/"
+        text="Time Table here."
+        isBlank={false}
+      />
+    </div>
+  </Section>
   <Section title={data.h2_1}>
     {
       data.sections.map((section) => (
@@ -63,13 +67,6 @@ let currentIndex = 0;
         </Section>
       ))
     }
-  </Section>
-  <Section title={data.h2_2}>
-    <div class="programBtnWrap">
-      <Button href="../program.pdf" text="Program" />
-      <Button href="../poster.pdf" text="Poster" />
-    </div>
-    <TimeTable />
   </Section>
   <Section title={data.h2_3}>
     <Table thead={data.attendee.thead} tbody={data.attendee.tbody} wide />

@@ -7,104 +7,103 @@ import Table from "./Table.astro";
   <input id="day1" class="tab-switch" type="radio" name="tab" checked />
   <label class="tab-label" for="day1">11/19</label>
   <div class="tab-content">
-    <Table wide
-      thead={["Time", "Contents", "Speakers"]}
+    <Table
+      wide
+      thead={["Time", "Contents", "Speakers", "abstract"]}
       tbody={[
-        {
-          item1: "9:00 ~ 9:50",
-          item2: "Registration",
-          item3: "",
-        },
-        {
-          item1: "9:50 ~ 10:00",
-          item2: "Welcome remark",
-          item3: "Tomonari Dotera",
-        },
-        {
-          item1: "10:00 ~ 10:10",
-          item2: "Openning address",
-          item3: "Itaru Matsumura<br />President of Kindai University",
-        },
-        {
-          item1: "10:10 ~ 11:00",
-          item2: "Tutorial 1",
-          item3: "Randall Kamien",
-        },
-        {
-          item1: "11:00 ~ 11:10",
-          item2: "Break",
-          item3: "",
-        },
-        {
-          item1: "11:10 ~ 12:00",
-          item2: "Tutorial 2",
-          item3: "Stephen Hyde",
-        },
-        {
-          item1: "12:00 ~ 13:30",
-          item2: "Lunch",
-          item3: "",
-        },
-        {
-          item1: "13:30 ~ 14:10",
-          item2: "Plenary",
-          item3: "Myfanwy Evans",
-        },
-        {
-          item1: "14:10 ~ 14:40",
-          item2: "Invite",
-          item3: "Jacob Kirkensgaard",
-        },
-        {
-          item1: "14:40 ~ 15:10",
-          item2: "Invite",
-          item3: "Koya Shimokawa",
-        },
-        {
-          item1: "15:10 ~ 15:40",
-          item2: "Coffee Break",
-          item3: "",
-        },
-        {
-          item1: "15:40 ~ 16:00",
-          item2: "Oral 1",
-          item3: "Hao Chen",
-        },
-        {
-          item1: "16:00 ~ 16:20",
-          item2: "Oral 2",
-          item3: "Chern Chuang",
-        },
-        {
-          item1: "16:20 ~ 16:40",
-          item2: "Oral 3",
-          item3: "Kanata Warisaya",
-        },
-        {
-          item1: "16:40 ~ 16:50",
-          item2: "Break",
-          item3: "",
-        },
-        {
-          item1: "16:50 ~ 17:10",
-          item2: "Oral 4",
-          item3: "Toshihiko Oka",
-        },
-        {
-          item1: "17:10 ~ 17:30",
-          item2: "Oral 5",
-          item3: "Goran Ungar",
-        },
-        {
-          item1: "17:30 ~ 17:50",
-          item2: "Oral 6",
-          item3: "Osamu Terasaki",
-        },
-        {
-          item1: "18:00 ~ 19:00",
-          item2: "Welcome Reception",
-          item3: "Reiko Schoen & Yushu Matsushita",
-        },
+        ["9:00 ~ 9:50", "Registration", "", ""],
+        [
+          "9:50 ~ 10:00",
+          "Welcome remark",
+          "Tomonari Dotera",
+          "<a href='/gyroidiseverywhere/abstract-pdf/invited/An-Chang_Shi.pdf'>Open abstract</a>",
+        ],
+        [
+          "10:00 ~ 10:10",
+          "Openning address",
+          "Itaru Matsumura<br />President of Kindai University",
+          "",
+        ],
+        // {
+        //   item1: "10:10 ~ 11:00",
+        //   item2: "Tutorial 1",
+        //   item3: "Randall Kamien",
+        // },
+        // {
+        //   item1: "11:00 ~ 11:10",
+        //   item2: "Break",
+        //   item3: "",
+        // },
+        // {
+        //   item1: "11:10 ~ 12:00",
+        //   item2: "Tutorial 2",
+        //   item3: "Stephen Hyde",
+        // },
+        // {
+        //   item1: "12:00 ~ 13:30",
+        //   item2: "Lunch",
+        //   item3: "",
+        // },
+        // {
+        //   item1: "13:30 ~ 14:10",
+        //   item2: "Plenary",
+        //   item3: "Myfanwy Evans",
+        // },
+        // {
+        //   item1: "14:10 ~ 14:40",
+        //   item2: "Invite",
+        //   item3: "Jacob Kirkensgaard",
+        // },
+        // {
+        //   item1: "14:40 ~ 15:10",
+        //   item2: "Invite",
+        //   item3: "Koya Shimokawa",
+        // },
+        // {
+        //   item1: "15:10 ~ 15:40",
+        //   item2: "Coffee Break",
+        //   item3: "",
+        // },
+        // {
+        //   item1: "15:40 ~ 16:00",
+        //   item2: "Oral 1",
+        //   item3: "Hao Chen",
+        // },
+        // {
+        //   item1: "16:00 ~ 16:20",
+        //   item2: "Oral 2",
+        //   item3: "Chern Chuang",
+        // },
+        // {
+        //   item1: "16:20 ~ 16:40",
+        //   item2: "Oral 3",
+        //   item3: "Kanata Warisaya",
+        // },
+        // {
+        //   item1: "16:40 ~ 16:50",
+        //   item2: "Break",
+        //   item3: "",
+        // },
+        // {
+        //   item1: "16:50 ~ 17:10",
+        //   item2: "Oral 4",
+        //   item3: "Toshihiko Oka",
+        // },
+        // {
+        //   item1: "17:10 ~ 17:30",
+        //   item2: "Oral 5",
+        //   item3: "Goran Ungar",
+        // },
+        // {
+        //   item1: "17:30 ~ 17:50",
+        //   item2: "Oral 6",
+        //   item3: "Osamu Terasaki",
+        // },
+        // {
+        //   item1: "18:00 ~ 19:00",
+        //   item2: "Welcome Reception",
+        //   item3: "Reiko Schoen & Yushu Matsushita",
+        // },
       ]}
     />
   </div>
@@ -113,74 +112,75 @@ import Table from "./Table.astro";
   <input id="day2" class="tab-switch" type="radio" name="tab" />
   <label class="tab-label" for="day2">11/20</label>
   <div class="tab-content">
-    <Table wide
-      thead={["Time", "Contents", "Speakers"]}
+    <Table
+      wide
+      thead={["Time", "Contents", "Speakers", "abstract"]}
       tbody={[
-        {
-          item1: "9:00 ~ 9:40",
-          item2: "Plenary",
-          item3: "Ulrich Wiesner",
-        },
-        {
-          item1: "9:40 ~ 10:10",
-          item2: "Invite",
-          item3: "Rong-Ming Ho",
-        },
-        {
-          item1: "10:10 ~ 10:40",
-          item2: "Invite",
-          item3: "An-Chang Shi",
-        },
-        {
-          item1: "10:40 ~ 11:10",
-          item2: "Coffee Break",
-          item3: "",
-        },
-        {
-          item1: "11:10 ~ 11:30",
-          item2: "Oral 7",
-          item3: "Lu Han",
-        },
-        {
-          item1: "11:30 ~ 11:50",
-          item2: "Oral 8",
-          item3: "Weihua Li",
-        },
-        {
-          item1: "11:50 ~ 12:10",
-          item2: "Oral 9",
-          item3: "Atsushi Takano",
-        },
-        {
-          item1: "12:10 ~ 13:30",
-          item2: "Lunch",
-          item3: "",
-        },
-        {
-          item1: "13:30 ~ 14:00",
-          item2: "Invite",
-          item3: "Xiangbing Zeng",
-        },
-        {
-          item1: "14:00 ~ 14:30",
-          item2: "Invite",
-          item3: "Takahiro Ichikawa",
-        },
-        {
-          item1: "14:30 ~ 14:50",
-          item2: "Oral 10",
-          item3: "Shoichi Kutsumizu",
-        },
-        {
-          item1: "14:50 ~ 15:20",
-          item2: "Coffee Break",
-          item3: "",
-        },
-        {
-          item1: "15:20 ~ 17:20",
-          item2: "Poster session",
-          item3: "You can display<br />your poster<br />from November 19 to 22.",
-        },
+        // {
+        //   item1: "9:00 ~ 9:40",
+        //   item2: "Plenary",
+        //   item3: "Ulrich Wiesner",
+        // },
+        // {
+        //   item1: "9:40 ~ 10:10",
+        //   item2: "Invite",
+        //   item3: "Rong-Ming Ho",
+        // },
+        // {
+        //   item1: "10:10 ~ 10:40",
+        //   item2: "Invite",
+        //   item3: "An-Chang Shi",
+        // },
+        // {
+        //   item1: "10:40 ~ 11:10",
+        //   item2: "Coffee Break",
+        //   item3: "",
+        // },
+        // {
+        //   item1: "11:10 ~ 11:30",
+        //   item2: "Oral 7",
+        //   item3: "Lu Han",
+        // },
+        // {
+        //   item1: "11:30 ~ 11:50",
+        //   item2: "Oral 8",
+        //   item3: "Weihua Li",
+        // },
+        // {
+        //   item1: "11:50 ~ 12:10",
+        //   item2: "Oral 9",
+        //   item3: "Atsushi Takano",
+        // },
+        // {
+        //   item1: "12:10 ~ 13:30",
+        //   item2: "Lunch",
+        //   item3: "",
+        // },
+        // {
+        //   item1: "13:30 ~ 14:00",
+        //   item2: "Invite",
+        //   item3: "Xiangbing Zeng",
+        // },
+        // {
+        //   item1: "14:00 ~ 14:30",
+        //   item2: "Invite",
+        //   item3: "Takahiro Ichikawa",
+        // },
+        // {
+        //   item1: "14:30 ~ 14:50",
+        //   item2: "Oral 10",
+        //   item3: "Shoichi Kutsumizu",
+        // },
+        // {
+        //   item1: "14:50 ~ 15:20",
+        //   item2: "Coffee Break",
+        //   item3: "",
+        // },
+        // {
+        //   item1: "15:20 ~ 17:20",
+        //   item2: "Poster session",
+        //   item3: "You can display<br />your poster<br />from November 19 to 22.",
+        // },
       ]}
     />
   </div>
@@ -189,50 +189,51 @@ import Table from "./Table.astro";
   <input id="day3" class="tab-switch" type="radio" name="tab" />
   <label class="tab-label" for="day3">11/21</label>
   <div class="tab-content">
-    <Table wide
-      thead={["Time", "Contents", "Speakers"]}
+    <Table
+      wide
+      thead={["Time", "Contents", "Speakers", "abstract"]}
       tbody={[
-        {
-          item1: "9:00 ~ 9:40",
-          item2: "Plenary",
-          item3: "Gregory Grason",
-        },
-        {
-          item1: "9:40 ~ 10:10",
-          item2: "Invite",
-          item3: "Philipp Schönhöfer",
-        },
-        {
-          item1: "10:10 ~ 10:40",
-          item2: "Invite",
-          item3: "Justin Llandro",
-        },
-        {
-          item1: "10:40 ~ 11:10",
-          item2: "Coffee Break",
-          item3: "",
-        },
-        {
-          item1: "11:10 ~ 11:30",
-          item2: "Oral 11",
-          item3: "Jun-ichi Fukuda",
-        },
-        {
-          item1: "11:30 ~ 11:50",
-          item2: "Oral 12",
-          item3: "Masahisa Tsuchiizu",
-        },
-        {
-          item1: "11:50 ~ 12:10",
-          item2: "Oral 13",
-          item3: "Rie Suizu",
-        },
-        {
-          item1: "12:20 ~ 19:30",
-          item2:
-            "Excursion<br />(Sumiyoshi Taisha Shrine,<br />Yamamoto Noh Theater,<br />Osaka Castle)<br />Dinner <br />(Osaka Geihinkan)",
-          item3: "<br /><br /><br /><br />Randall Kamien",
-        },
+        // {
+        //   item1: "9:00 ~ 9:40",
+        //   item2: "Plenary",
+        //   item3: "Gregory Grason",
+        // },
+        // {
+        //   item1: "9:40 ~ 10:10",
+        //   item2: "Invite",
+        //   item3: "Philipp Schönhöfer",
+        // },
+        // {
+        //   item1: "10:10 ~ 10:40",
+        //   item2: "Invite",
+        //   item3: "Justin Llandro",
+        // },
+        // {
+        //   item1: "10:40 ~ 11:10",
+        //   item2: "Coffee Break",
+        //   item3: "",
+        // },
+        // {
+        //   item1: "11:10 ~ 11:30",
+        //   item2: "Oral 11",
+        //   item3: "Jun-ichi Fukuda",
+        // },
+        // {
+        //   item1: "11:30 ~ 11:50",
+        //   item2: "Oral 12",
+        //   item3: "Masahisa Tsuchiizu",
+        // },
+        // {
+        //   item1: "11:50 ~ 12:10",
+        //   item2: "Oral 13",
+        //   item3: "Rie Suizu",
+        // },
+        // {
+        //   item1: "12:20 ~ 19:30",
+        //   item2:
+        //     "Excursion<br />(Sumiyoshi Taisha Shrine,<br />Yamamoto Noh Theater,<br />Osaka Castle)<br />Dinner <br />(Osaka Geihinkan)",
+        //   item3: "<br /><br /><br /><br />Randall Kamien",
+        // },
       ]}
     />
   </div>
@@ -241,59 +242,60 @@ import Table from "./Table.astro";
   <input id="day4" class="tab-switch" type="radio" name="tab" />
   <label class="tab-label" for="day4">11/22</label>
   <div class="tab-content">
-    <Table wide
-      thead={["Time", "Contents", "Speakers"]}
+    <Table
+      wide
+      thead={["Time", "Contents", "Speakers", "abstract"]}
       tbody={[
-        {
-          item1: "9:00 ~ 9:40",
-          item2: "Plenary",
-          item3: "Matthias Saba",
-        },
-        {
-          item1: "9:40 ~ 10:10",
-          item2: "Invite",
-          item3: "Vinodkumar Saranathan",
-        },
-        {
-          item1: "10:10 ~ 10:40",
-          item2: "Invite",
-          item3: "Łucja Kowlewska",
-        },
-        {
-          item1: "10:40 ~ 11:10",
-          item2: "Coffee Break",
-          item3: "",
-        },
-        {
-          item1: "11:10 ~ 11:30",
-          item2: "Oral 14",
-          item3: "Annie Jessop",
-        },
-        {
-          item1: "11:30 ~ 11:50",
-          item2: "Oral 15",
-          item3: "Shigeru Okamoto",
-        },
-        {
-          item1: "11:50 ~ 12:50",
-          item2: "Lunch",
-          item3: "",
-        },
-        {
-          item1: "12:50 ~ 13:20",
-          item2: "Invite",
-          item3: "Kunio Awaga",
-        },
-        {
-          item1: "13:20 ~ 14:00",
-          item2: "Discussion",
-          item3: "Gerd Schröder‐Turk",
-        },
-        {
-          item1: "14:00 ~ 14:10",
-          item2: "Closing Remarks",
-          item3: "Stephen Hyde",
-        },
+        // {
+        //   item1: "9:00 ~ 9:40",
+        //   item2: "Plenary",
+        //   item3: "Matthias Saba",
+        // },
+        // {
+        //   item1: "9:40 ~ 10:10",
+        //   item2: "Invite",
+        //   item3: "Vinodkumar Saranathan",
+        // },
+        // {
+        //   item1: "10:10 ~ 10:40",
+        //   item2: "Invite",
+        //   item3: "Łucja Kowlewska",
+        // },
+        // {
+        //   item1: "10:40 ~ 11:10",
+        //   item2: "Coffee Break",
+        //   item3: "",
+        // },
+        // {
+        //   item1: "11:10 ~ 11:30",
+        //   item2: "Oral 14",
+        //   item3: "Annie Jessop",
+        // },
+        // {
+        //   item1: "11:30 ~ 11:50",
+        //   item2: "Oral 15",
+        //   item3: "Shigeru Okamoto",
+        // },
+        // {
+        //   item1: "11:50 ~ 12:50",
+        //   item2: "Lunch",
+        //   item3: "",
+        // },
+        // {
+        //   item1: "12:50 ~ 13:20",
+        //   item2: "Invite",
+        //   item3: "Kunio Awaga",
+        // },
+        // {
+        //   item1: "13:20 ~ 14:00",
+        //   item2: "Discussion",
+        //   item3: "Gerd Schröder‐Turk",
+        // },
+        // {
+        //   item1: "14:00 ~ 14:10",
+        //   item2: "Closing Remarks",
+        //   item3: "Stephen Hyde",
+        // },
       ]}
     />
   </div>
@@ -327,8 +329,8 @@ import Table from "./Table.astro";
     cursor: pointer;
     flex: 1;
     order: -1;
-    
-    &:not(:last-of-type){
+
+    &:not(:last-of-type) {
       margin-right: 5px;
     }
   }
@@ -343,7 +345,7 @@ import Table from "./Table.astro";
 
   .tab-switch:checked + .tab-label {
     background-color: var(--color-main);
-    
+
     & + .tab-content {
       height: auto;
       opacity: 1;

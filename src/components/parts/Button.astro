@@ -2,13 +2,18 @@
 interface Props {
   text: string;
   href: string;
+  isBlank?: boolean;
 }
 
-const { text, href } = Astro.props;
+const { text, href, isBlank = true } = Astro.props;
 ---
 
 <div class="hoverBg">
-  <a href={href} target="_blank" rel="noopener noreferrer">{text}</a>
+  <a
+    href={href}
+    target={isBlank ? "_blank" : ""}
+    rel={isBlank ? "noopener noreferrer" : ""}>{text}</a
+  >
 </div>
 
 <style lang="scss">
