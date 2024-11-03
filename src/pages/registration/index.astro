@@ -10,10 +10,7 @@ import Table from "../../components/parts/Table.astro";
   <Section title="Shuttle bus service">
     <iframe
       src="https://www.google.com/maps/d/embed?mid=1OY0STwglaz4d3xRgcHPoTePQIwfUKTI&ehbc=2E312F"
-      width="640"
-      height="480"
-    >
-    </iframe>
+    ></iframe>
   </Section>
 
   <Section title="Registration fees">
@@ -109,6 +106,11 @@ import Table from "../../components/parts/Table.astro";
 
 <style lang="scss">
   @import "../../styles/mq.scss";
+  iframe {
+    width: 100%;
+    max-width: 640px;
+    aspect-ratio: 640 / 480;
+  }
   .tableWrap {
     overflow: auto;
     white-space: nowrap;

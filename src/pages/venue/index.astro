@@ -105,22 +105,29 @@ const links = [
             image={{ src: imageMap.src, alt: "Campus Mapのイメージ画像" }}
             overflow
           />
+          <iframe
+            src="https://www.google.com/maps/d/u/0/embed?mid=1g3amiFwM4kXZ4fBEfSnuw1xVnmzrf3g&ehbc=2E312F"
+          ></iframe>
         </div>
-<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1g3amiFwM4kXZ4fBEfSnuw1xVnmzrf3g&ehbc=2E312F" width="640" height="480"></iframe>
       </section>
       <section>
-        <h2>Shuttle Bus (Tennoji-Kindai, Kindai-Tennoji) </h2>
-		<div class="description"> Nov. 19 (Tue.): Morning 8:40-9:20, Return 19:15-19:55</div>
-		<div class="description"> Nov. 20 (Wed.): Morning 8:00-8:40, Return 17:30-18:10</div>
-		<div class="description"> Nov. 21 (Thu.): Morning 8:00-8:40, Excursion</div>
-		<div class="description"> Nov. 22 (Fri.): Morning 8:00-8:40, Return 14:30-15:10</div>
+        <h2>Shuttle Bus (Tennoji-Kindai, Kindai-Tennoji)</h2>
+        <div class="description">
+          <p>Nov. 19 (Tue.): Morning 8:40-9:20, Return 19:15-19:55</p>
+          <p>Nov. 20 (Wed.): Morning 8:00-8:40, Return 17:30-18:10</p>
+          <p>Nov. 21 (Thu.): Morning 8:00-8:40, Excursion</p>
+          <p>Nov. 22 (Fri.): Morning 8:00-8:40, Return 14:30-15:10</p>
+        </div>
         <div class="cardWrapper">
           <SimpleCard
             image={{ src: imageBus.src, alt: "Shuttle Busのイメージ画像" }}
             overflow
           />
+          <iframe
+            src="https://www.google.com/maps/d/embed?mid=1OY0STwglaz4d3xRgcHPoTePQIwfUKTI&ehbc=2E312F"
+          >
+          </iframe>
         </div>
-<iframe src="https://www.google.com/maps/d/embed?mid=1OY0STwglaz4d3xRgcHPoTePQIwfUKTI&ehbc=2E312F" width="640" height="480"></iframe>
       </section>
       <section>
         <h2>Excursion</h2>
@@ -157,10 +164,13 @@ const links = [
               alt: "Osaka Geihinkanのイメージ画像",
             }}
           />
-		  <iframe src="https://www.google.com/maps/d/embed?mid=1Y9sbEAwx0kEMSH49i1ZzEuuMw-IVRMs&ehbc=2E312F" width="640" height="400"></iframe>
+          <iframe
+            src="https://www.google.com/maps/d/embed?mid=1Y9sbEAwx0kEMSH49i1ZzEuuMw-IVRMs&ehbc=2E312F"
+            width="640"
+            height="400"></iframe>
         </div>
       </section>
-   </div>
+    </div>
     <ul class="links">
       {
         links.map((link) => {
@@ -204,15 +214,24 @@ const links = [
     }
     .description {
       font-size: 16px;
+      p {
+        margin-top: 0.5em;
+      }
       @include mq() {
         font-size: 18px;
       }
     }
     .cardWrapper {
+      display: grid;
+      gap: 16px;
       @include mq() {
-        display: grid;
         gap: 32px;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 50%);
+      }
+      iframe {
+        width: 100%;
+        max-width: 640px;
+        aspect-ratio: 640 / 480;
       }
     }
   }
