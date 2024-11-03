@@ -20,14 +20,17 @@ const { text, href, isBlank = true } = Astro.props;
   @import "../../styles/mq.scss";
 
   .hoverBg {
-    height: 50px;
+    height: 40px;
     display: flex;
     align-items: center;
+    @include mq() {
+      height: 50px;
+    }
   }
 
   a {
     text-decoration: none;
-    padding: 0 30px;
+    padding: 0 10px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -38,8 +41,12 @@ const { text, href, isBlank = true } = Astro.props;
     background-color: #ffe5e5;
     font-family: var(--font-en2);
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     letter-spacing: 0.03em;
+    @include mq() {
+      font-size: 18px;
+      padding: 0 30px;
+    }
     &:hover {
       border-bottom-width: 0;
     }

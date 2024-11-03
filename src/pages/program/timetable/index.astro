@@ -1,18 +1,35 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import Section from "../../../components/Section.astro";
+import Button from "../../../components/parts/Button.astro";
 import TimeTable from "../../../components/parts/TimeTable.astro";
 ---
 
 <Layout pageTitle="Program">
   <Section title="password required">
     <div id="js-hiddenArea">
+      <div class="programBtnWrap">
+        <Button
+          href={import.meta.env.BASE_URL + "poster.pdf"}
+          text="Poster PDF"
+        />
+        <Button
+          href={import.meta.env.BASE_URL + "abstract-book.pdf"}
+          text="AbstractBook PDF"
+        />
+      </div>
       <TimeTable />
     </div>
   </Section>
 </Layout>
 
 <style lang="scss">
+  .programBtnWrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
   #js-hiddenArea {
     display: none;
     &.is-show {
