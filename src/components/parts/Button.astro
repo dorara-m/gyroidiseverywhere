@@ -10,6 +10,7 @@ const { text, href, isBlank = true } = Astro.props;
 
 <div class="hoverBg">
   <a
+    class="button"
     href={href}
     target={isBlank ? "_blank" : ""}
     rel={isBlank ? "noopener noreferrer" : ""}>{text}</a
@@ -28,7 +29,7 @@ const { text, href, isBlank = true } = Astro.props;
     }
   }
 
-  a {
+  .button {
     text-decoration: none;
     padding: 0 10px;
     height: 100%;
