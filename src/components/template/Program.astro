@@ -45,15 +45,11 @@ let currentIndex = 0;
         text="Password required"
         isBlank={false}
       />
-    </div>
-    <div class="programBtnWrap">
       <Button
         href="/gyroidiseverywhere/program.pdf"
         text="Program"
         isBlank={false}
       />
-    </div>
-    <div class="programBtnWrap">
       <Button
         href="/gyroidiseverywhere/poster.pdf"
         text="Posters"
@@ -110,6 +106,10 @@ let currentIndex = 0;
       background: url("../../images/program/icon-information.png") no-repeat;
       background-size: cover;
     }
+  }
+  .programBtnWrap {
+    display: flex;
+    gap: 16px;
   }
 </style>
 
