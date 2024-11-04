@@ -3,13 +3,16 @@ interface Props {
   thead: string[];
   tbody: string[][];
   wide?: boolean;
+  timeTable?: boolean;
 }
 
-const { thead, tbody, wide } = Astro.props;
+const { thead, tbody, wide, timeTable } = Astro.props;
 ---
 
 <div class="tableWrap">
-  <table class={`table ${wide ? "wide" : ""}`}>
+  <table
+    class={`table ${wide ? "-wide" : ""} ${timeTable ? "-timeTable" : ""}`}
+  >
     <thead>
       <tr>
         {
@@ -57,13 +60,19 @@ const { thead, tbody, wide } = Astro.props;
     @include mq() {
       width: 80%;
     }
-    &.wide {
+    &.-wide {
       width: 100%;
       overflow: visible;
       table-layout: auto;
 
       @include mq() {
         table-layout: fixed;
+      }
+    }
+    &.-timeTable {
+      th:first-child,
+      td:first-child {
+        width: 15%;
       }
     }
     thead {

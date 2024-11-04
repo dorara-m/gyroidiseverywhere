@@ -46,16 +46,12 @@ let currentIndex = 0;
         isBlank={false}
       />
     </div>
-	<br>
     <div class="programBtnWrap">
       <Button
         href="/gyroidiseverywhere/program.pdf"
         text="Program"
         isBlank={false}
       />
-    </div>
-	<br>
-    <div class="programBtnWrap">
       <Button
         href="/gyroidiseverywhere/poster.pdf"
         text="Posters: Poster size: A0 (board width 900 mm). Display from Nov. 19 to 22."
@@ -111,6 +107,14 @@ let currentIndex = 0;
       height: 15px;
       background: url("../../images/program/icon-information.png") no-repeat;
       background-size: cover;
+    }
+  }
+  .programBtnWrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    & + & {
+      margin-top: 16px;
     }
   }
 </style>
